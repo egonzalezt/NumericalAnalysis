@@ -1,3 +1,5 @@
+<p align="center"><a href="https://github.com/egonzalezt/NumericalAnalysis" target="_blank"><img src="https://www.python.org/static/community_logos/python-powered-w.svg" width="400"></a></p>
+
 # NumericalAnalysis
 Repository for the project of Numerical analysis 
 
@@ -11,5 +13,3 @@ Repository for the project of Numerical analysis
 # Project type
 
 For this project, we are going to develop the methods view in class of Numerical analysis. 
-
-# Catmilo es furro
