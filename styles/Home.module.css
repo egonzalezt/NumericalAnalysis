@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: rgb(231, 229, 230);
 }
 .center{text-align:center}
 #space-invaders {

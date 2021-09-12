@@ -43,10 +43,13 @@
   }
   
   .card {
-    background: rgb(201, 87, 87);
+    background: #3494E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     cursor: default;
     height: 300px;
-    border: #333 2px solid;
+    border: rgb(51, 177, 135) 2px solid;
     transform-style: preserve-3d;
     transition: transform 0.4s ease 0s;
     width: 100%;
@@ -179,5 +182,17 @@
     flex-wrap: wrap;
     max-width: 800px;
     margin-top: 3rem;
+  }
+  
+  .title2{
+    font-size: 4.5rem;
+    text-align: center;
+    margin-top: 3rem;
+    transform-style: preserve-3d;
+    transition: transform 0.60s ease 0s;
+    width: 100%;
+    -webkit-animation: giro 5s 100;
+    animation: giro 1s 100;
+
   }
   
