@@ -21,7 +21,7 @@ export default function Home() {
 
         <div className={styles.grid}>
           <a href="/methods" className={styles.card}>
-            <h2>Numerical methods &rarr;</h2>
+            <h2 className={styles.h2}>Numerical methods &rarr;</h2>
           </a>
 
           <a href="/Team" className={styles.card}>
@@ -38,7 +38,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-      
+   
       </footer>
     </div>
   )

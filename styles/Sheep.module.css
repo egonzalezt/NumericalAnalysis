@@ -11,16 +11,20 @@
   
   .kirby {
     width: 150px;
-    animation-name: floating;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    position: relative;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: 100;
   }
   
-  @keyframes floating{
+  @keyframes example{
     from {transform: translate(0, 0px);}
-    50% {transform: translate(0, 20px);}
-    to {transform: translate(0, 0px);}    
+    0%   {left:0px; top:0px;}
+    15%  { left:700px; top:-400px;}
+    25%  { left:500px; top:-450px;}
+    50%  { left:300px; top:500px;}
+    75%  { left:0px; top:540px;}
+    100% { left:0px; top:0px;} 
   }
 
   .grid {
@@ -28,8 +32,8 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 800px;
-    margin-top: 3rem;
+    max-width: 1000px;
+    margin-top: 2rem;
   }
   
   .body {
@@ -37,15 +41,15 @@
   }
   
   .h1 {
-   font-family: monospace;
-   font-size: 55px;
-   display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 800px;
+    max-width: 1000px;
     margin-top: 3rem;
+    font-size: 100px;
   }
+  
   .img {
     padding: 20px;
   }
@@ -75,4 +79,44 @@
     color: grey;
     
   }
+  .button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
   
+  .button:hover {background-color: #3e8e41}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+ 
+  @keyframes rainbow {
+    0%, 100% {
+        fill: red;
+    }
+    33% {
+        fill: blue;
+    }
+    66% {
+        fill: yellow;
+    }
+}
+.svg {
+    animation: rainbow 60s linear infinite;
+    position: relative;
+    z-index: 0;
+    display: block;
+
+}

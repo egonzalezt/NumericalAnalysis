@@ -65,6 +65,7 @@
   font-size: 1.5rem;
 }
 
+
 .code {
   background: #fafafa;
   border-radius: 5px;
@@ -81,7 +82,21 @@
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 100;
 }
+@keyframes example{
+  from {transform: translate(0, 0px);}
+  0%   {left:0px; top:0px;}
+  15%  { left:80px; top:50px;}
+  25%  { left:70px; top:40px;}
+  50%  { left:50px; top:30px;}
+  75%  { left:0px; top:20px;}
+  100% { left:0px; top:0px;} 
+}
+
 
 .card {
   margin: 1rem;
@@ -122,5 +137,7 @@
   .grid {
     width: 100%;
     flex-direction: column;
+    
   }
 }
+
