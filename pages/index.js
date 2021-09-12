@@ -24,7 +24,7 @@ export default function Home() {
             <h2 className={styles.h2}>Numerical methods &rarr;</h2>
           </a>
 
-          <a href="/Team" className={styles.card}>
+          <a href="/team" className={styles.card}>
             <h2>Team  &rarr;</h2>
           </a>
 
