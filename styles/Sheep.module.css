@@ -1,0 +1,78 @@
+.body {
+    background: lightBlue;
+    height: 100%;
+  }
+  
+  .container {
+      width: 150px;
+      height: 150px;
+      margin: 60px auto 30px auto;
+  }
+  
+  .kirby {
+    width: 150px;
+    animation-name: floating;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  
+  @keyframes floating{
+    from {transform: translate(0, 0px);}
+    50% {transform: translate(0, 20px);}
+    to {transform: translate(0, 0px);}    
+  }
+
+  .grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-top: 3rem;
+  }
+  
+  .body {
+    background-color: white;
+  }
+  
+  .h1 {
+   font-family: monospace;
+   font-size: 55px;
+   display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-top: 3rem;
+  }
+  .img {
+    padding: 20px;
+  }
+  .quotes {
+    background: black;
+    border-color: grey; 
+    border-style: solid;
+    border-radius: 5px;
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: monospace;
+    color: white;
+    font-size: 25px;
+    margin-top: 25px;
+    padding: 20px;
+    height: auto;
+  }
+  .quote {
+    font-size: 30px;
+  }
+  .author {
+    font-size :20px;
+    font-style: italic;
+  }
+  .a{
+    color: grey;
+    
+  }
+  
