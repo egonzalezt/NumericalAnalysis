@@ -1,34 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# NumericalAnalysis
+Repository for the project of Numerical analysis 
 
-First, run the development server:
+# Team Members
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- David Felipe Garcia [![GitHub-Mark-Light-32px](https://user-images.githubusercontent.com/53051438/128283510-7d92c6a9-9c3e-4b22-b1ce-7786d951ef65.png)](https://github.com/dfgarciac1) dfgarciac1@eafit.edu.co
+- Ximena Guerrero Villa [![GitHub-Mark-Light-32px](https://user-images.githubusercontent.com/53051438/128283510-7d92c6a9-9c3e-4b22-b1ce-7786d951ef65.png)](https://github.com/xguerrerov1) xguerrerov@eafit.edu.co
+- Camilo Cañas Jaramillo [![GitHub-Mark-Light-32px](https://user-images.githubusercontent.com/53051438/128283510-7d92c6a9-9c3e-4b22-b1ce-7786d951ef65.png)](https://github.com/ccanasj) ccanasj@eafit.edu.co
+- Esteban Gonzalez Tamayo [![GitHub-Mark-Light-32px](https://user-images.githubusercontent.com/53051438/128283510-7d92c6a9-9c3e-4b22-b1ce-7786d951ef65.png)](https://github.com/egonzalezt) egonzalezt@eafit.edu.co
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Project type
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+For this project, we are going to develop the methods view in class of Numerical analysis. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Init Proyect
+## Comands
+-For  run this repository you need node install
+-then run npm install
+- For RUN ALL npm dev
