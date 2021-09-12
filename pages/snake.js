@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import useInterval from 'use-interval'
-import Head from 'components/Head'
+import Head from '../components/Head'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styles from '../styles/Snake.module.css'
 
 export default function SnakeGame () {
   // Canvas Settings
@@ -218,20 +219,23 @@ export default function SnakeGame () {
   return (
     <>
       <Head />
-      <main>
-        <canvas
+      <main className={styles.main}>
+
+        <canvas className={styles.canvas}
           ref={canvasRef}
           width={canvasWidth + 1}
           height={canvasHeight + 1}
         />
-        <section>
-          <div className='score'>
-            <p><FontAwesomeIcon icon={['fas', 'star']} />Score: {score}</p>
-            <p><FontAwesomeIcon icon={['fas', 'trophy']} />Highscore: {highscore > score ? highscore : score}</p>
+        <section className={styles.section}>
+          <div className={styles.score}>
+            <p className={styles.p}><FontAwesomeIcon icon={['fas', 'star']} />Score: {score}</p>
+            <p className={styles.p}><FontAwesomeIcon icon={['fas', 'trophy']} />Highscore: {highscore > score ? highscore : score}</p>
+            <a className={styles.button}href="/">Home</a>
+
           </div>
           { (!isLost && countDown > 0) ?
             <button onClick={startGame}>{ countDown === 4 ? 'Start Game' : countDown}</button> :
-            <div className='controls'>
+            <div className={styles.controls}>
               <p>How to Play?</p>
               <p><FontAwesomeIcon icon={['fas', 'arrow-up']} /><FontAwesomeIcon icon={['fas', 'arrow-right']} /><FontAwesomeIcon icon={['fas', 'arrow-down']} /><FontAwesomeIcon icon={['fas', 'arrow-left']} /></p>
             </div>

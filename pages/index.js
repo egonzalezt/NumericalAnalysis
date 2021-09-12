@@ -13,10 +13,13 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to Numerical Analysis
+
         </h1>
         <p className={styles.description}>
           Get started by {' '}
           <code className={styles.code}>Numerical methods</code>
+          <a href="/snake"> ಠ_ಠ </a>
+
         </p>
 
         <div className={styles.grid}>

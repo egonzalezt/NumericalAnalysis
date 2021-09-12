@@ -1,0 +1,93 @@
+.main {
+    background-color: #8ec1e4;
+    border-radius: 6px;
+    box-shadow: 0px 4px 18px rgba(18,38,63,0.12);
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .canvas {
+    background-color: rgb(136, 136, 136);
+    box-shadow: 0px 2px 4px rgba(46, 151, 221, 0.5);
+  }
+  
+  .section {
+    padding: 0 18px 2px 18px;
+    height: 66px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+    .p {
+        padding: 0;
+        margin: 0;
+    }
+        .p:not(:first-child) {
+            margin: 6px 0 0 0;
+          }
+  
+      .svg {
+        margin: 0 6px 0 0;
+        width: 18px !important;
+        text-align: center;
+      }
+    
+  
+    .score {
+      padding: 0 0 2px 0;
+    }
+  
+    .controls {
+      text-align: right;
+      padding: 0 0 2px 0;
+  
+     
+    }
+ .svg {
+    margin: 0 0 0 6px;
+  }
+  
+  .button {
+    margin: 0;
+    padding: 8px 18px;
+    min-width: 120px;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    color: white;
+    background-color: #0170F3;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(1, 112, 243, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .button.button {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {background-color: #3e8e41}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
