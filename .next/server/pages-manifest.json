@@ -1,7 +1,13 @@
 {
+  "/404": "pages/404.html",
   "/_app": "pages/_app.js",
+  "/api/hello": "pages/api/hello.js",
+  "/": "pages/index.html",
+  "/methods": "pages/methods.html",
+  "/methods/search/form": "pages/methods/search/form.html",
+  "/methods/search": "pages/methods/search.html",
+  "/snake": "pages/snake.html",
+  "/team": "pages/team.html",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/snake": "pages/snake.js",
-  "/": "pages/index.js"
+  "/_document": "pages/_document.js"
 }

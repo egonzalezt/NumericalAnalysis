@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import style from '../../../styles/Form.module.css'
 import axios from "axios";
 
-export const SignupForm = (props) => {
+export  const SignupForm= () =>{
 
     const formik = useFormik({
         initialValues: {
@@ -92,3 +92,5 @@ export const SignupForm = (props) => {
         </div>
     );
 };
+
+export default SignupForm;
