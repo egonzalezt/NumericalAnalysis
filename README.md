@@ -16,4 +16,12 @@ For this project, we are going to develop the methods view in class of Numerical
 
 # Gui
 
+in this branch is where the graphic interface is implemented
+
 Visit frontend Branch [![GitHub-Mark-Light-32px](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/32px-Unofficial_JavaScript_logo_2.svg.png)](https://github.com/egonzalezt/NumericalAnalysis/tree/frontend)
+
+# Backend
+
+In this branch is where the methods are implemented
+
+Visit backend Branch [![GitHub-Mark-Light-32px](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/32px-Python-logo-notext.svg.png)](https://github.com/egonzalezt/NumericalAnalysis/tree/backend)
