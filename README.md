@@ -13,3 +13,56 @@ Repository for the project of Numerical analysis
 # Project type
 
 For this project, we are going to develop the methods view in class of Numerical analysis. 
+
+# Setup
+
+First you need to install python 3 then you need to run this command:
+
+pip install -r requirements.txt
+
+once you run the command you need to execute this command on your CLI.
+
+Windows: Python app.py
+Linux: Python3 app.py
+
+# Methods
+
+  To try this method use an aplication like postman or another app to test apis
+
+## Incremental Searches
+  
+  Endpoint: http://127.0.0.1:5000/api/v1/methods/BI
+  
+  example(format json)
+  
+  {
+    "func": "(x-1)**2-2",
+    "x0":-1,
+    "delta":0.5,
+    "iter":32
+  }
+
+## Bisection
+   
+   Endpoint: http://127.0.0.1:5000/api/v1/methods/Biseccion
+   
+   example(format json)
+    {
+      "func": "x**3-5",
+      "x0":1.5,
+      "x1":1.75,
+      "tol":1e-5
+    }
+     
+## Fixed Point
+
+## False Rule
+
+  Endpoint: http://127.0.0.1:5000/api/v1/methods/ReglaFake
+
+## Newton
+
+## Secant
+
+## Multiple Roots
+
