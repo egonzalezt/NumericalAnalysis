@@ -7,6 +7,7 @@ Original file is located at
 """
 
 import matplotlib.pyplot as plt
+from py_expression_eval import Parser
 
 """**Problema**: Encontrar la raíz cuadrada de 2 usando el método de **Busqueda Incremental **
 
@@ -17,9 +18,10 @@ f(x)=(x-1)^2-2=0
 $$
 """
 
+
 def FunctionEval(function:str,x0):
-    Evalfunc = function.replace("x",str(x0))
-    return eval(Evalfunc)
+    parser = Parser()
+    return parser.parse(function).evaluate({'x': x0})  
 
 def SearchIncremental(func,x0,delta,iter):
   '''

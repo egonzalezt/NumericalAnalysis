@@ -1,6 +1,8 @@
 from Functions.BusquedasIncrementales import SearchIncremental
 from Functions.Biseccion import Biseccion
 from Functions.ReglaFalsa import ReglaFalsa
+from Functions.PuntoFijo import fixedPoint
+from Functions.Newton import newton
 
 from flask import request, jsonify
 from __main__ import app
@@ -44,6 +46,20 @@ def reglaFalsa():
         return jsonify(result)
     else:
         return 'bad request!', 400 
+
+@app.route('/api/v1/methods/FixedPoint', methods=['GET'])
+def puntoFijo():
+    data = request.get_json()
+
+    result = fixedPoint(data["func"],data["x0"],data["tol"],data["iter"])
+    return jsonify(result)
+
+@app.route('/api/v1/methods/Newton', methods=['GET'])
+def newton():
+    data = request.get_json()
+
+    result = newton(data["func"],data["dfunc"],data["x0"],data["tol"],data["iter"])
+    return jsonify(result)
 
 @app.errorhandler(404)
 def resource_not_found(e):

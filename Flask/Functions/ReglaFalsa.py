@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from py_expression_eval import Parser
 
 '''
   El metodo de la *Regla Falsa* es un método cerrado para resolver ecuaciones no lineales
@@ -18,8 +19,8 @@ import matplotlib.pyplot as plt
 '''
 
 def FunctionEval(function:str,x0):
-    Evalfunc = function.replace("x",str(x0))
-    return eval(Evalfunc)
+    parser = Parser()
+    return parser.parse(function).evaluate({'x': x0})    
 
 #Definición de la función para el método de la Regla Falsa
 def ReglaFalsa(f,x0,x1,tol=1e-5):

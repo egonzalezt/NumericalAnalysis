@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from py_expression_eval import Parser
 
 '''
   Entrada
@@ -24,9 +25,10 @@ import matplotlib.pyplot as plt
       x : Raíz de la ecuación
   tabla : Tabla de iteraciones
 '''
+
 def FunctionEval(function:str,x0):
-    Evalfunc = function.replace("x",str(x0))
-    return eval(Evalfunc)
+    parser = Parser()
+    return parser.parse(function).evaluate({'x': x0})  
 
 def Biseccion(f,x0,x1,tol=1e-5):
   #validación del rango que encierra la raíz
