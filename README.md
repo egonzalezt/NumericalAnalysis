@@ -18,12 +18,17 @@ For this project, we are going to develop the methods view in class of Numerical
 
 First you need to install python 3 then you need to run this command:
 
+```bash
 pip install -r requirements.txt
+```
 
 once you run the command you need to execute this command on your CLI.
 
+
+```bash
 Windows: Python app.py
 Linux: Python3 app.py
+```
 
 # Methods
 
