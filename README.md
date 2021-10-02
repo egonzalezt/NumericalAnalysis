@@ -40,25 +40,29 @@ Linux: Python3 app.py
   
   example(format json)
   
+```json
   {
     "func": "(x-1)**2-2",
     "x0":-1,
     "delta":0.5,
     "iter":32
   }
+```
 
 ## Bisection
    
    Endpoint: http://127.0.0.1:5000/api/v1/methods/Biseccion
    
    example(format json)
+   ```json
     {
       "func": "x**3-5",
       "x0":1.5,
       "x1":1.75,
       "tol":1e-5
     }
-     
+  ```
+
 ## Fixed Point
 
 ## False Rule
