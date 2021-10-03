@@ -3,8 +3,12 @@ from Functions.Biseccion import Biseccion
 from Functions.ReglaFalsa import ReglaFalsa
 from Functions.PuntoFijo import fixedPoint
 from Functions.Newton import newton
+from Functions.Secante import secante
+from Functions.RaicesMult import SQRTMult
 
-from flask import request, jsonify
+from Decoder.routedecoder import decode
+
+from flask import json, request, jsonify
 from __main__ import app
 
 @app.route('/test', methods=['GET'])
@@ -13,54 +17,88 @@ def test():
 
 @app.route('/api/v1/methods/BI', methods=['GET'])
 def busquedasInc():
-    dic = {"func":"","x0":0,"delta":0,"iter":0}
-    state = True
+
+    params = ["func","x0","delta","iter"]
     json_data = request.get_json()
-    for values in json_data:
-        dic[values]=json_data[values]
-    
-    if state:
-        result = SearchIncremental(dic["func"],dic["x0"],dic["delta"],dic["iter"])
-        return jsonify(result)
-    else:
-        return 'bad request!', 400 
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = SearchIncremental(**values)
+    return jsonify(result)
 
 @app.route('/api/v1/methods/Biseccion', methods=['GET'])
 def biseccion():
-    state = True
-    data = request.get_json()
 
-    if state:
-        result = Biseccion(data["func"],data["x0"],data["x1"],data["tol"])
-        return jsonify(result)
-    else:
-        return 'bad request!', 400  
+    params = ["func","x0","x1","tol"]
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = Biseccion(**values)
+    return jsonify(result)
 
 @app.route('/api/v1/methods/ReglaFake', methods=['GET'])
 def reglaFalsa():
-    state = True
-    data = request.get_json()
-
-    if state:
-        result = ReglaFalsa(data["func"],data["x0"],data["x1"],data["tol"])
-        return jsonify(result)
-    else:
-        return 'bad request!', 400 
+    
+    params = ["func","x0","x1","tol"]
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = ReglaFalsa(**values)
+    return jsonify(result)
 
 @app.route('/api/v1/methods/FixedPoint', methods=['GET'])
 def puntoFijo():
-    data = request.get_json()
 
-    result = fixedPoint(data["func"],data["x0"],data["tol"],data["iter"])
+    params = ["g","x0","tol","iter"]
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = fixedPoint(**values)
     return jsonify(result)
 
 @app.route('/api/v1/methods/Newton', methods=['GET'])
 def newton():
-    data = request.get_json()
 
-    result = newton(data["func"],data["dfunc"],data["x0"],data["tol"],data["iter"])
+    params = ["func","dfunc","x0","tol","iter"]
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = newton(**values)
+    return jsonify(result)
+
+@app.route('/api/v1/methods/Secant', methods=['GET'])
+def secant():
+
+    params = ["func","x0","x1","tol","iter"]
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = secante(**values)
+    return jsonify(result)
+
+@app.route('/api/v1/methods/SQRTMult', methods=['GET'])
+def raicesMultiples():
+
+    params = ["func","dfunc","d2func","x0","tol","iter"]
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+    except Exception as e: 
+        return str(e), 400
+    result = SQRTMult(**values)
     return jsonify(result)
 
 @app.errorhandler(404)
 def resource_not_found(e):
-    return 'What are you doing here', 400 
+    return 'What are you doing here', 404 
