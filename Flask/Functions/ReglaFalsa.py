@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from py_expression_eval import Parser
+from Expression_Evaluator.evaluator import FunctionEval
 
 '''
   El metodo de la *Regla Falsa* es un método cerrado para resolver ecuaciones no lineales
@@ -16,29 +16,25 @@ from py_expression_eval import Parser
   ------
       x : Raíz de la ecuación
   tabla : Tabla de iteraciones
-'''
-
-def FunctionEval(function:str,x0):
-    parser = Parser()
-    return parser.parse(function).evaluate({'x': x0})    
+''' 
 
 #Definición de la función para el método de la Regla Falsa
-def ReglaFalsa(f,x0,x1,tol=1e-5):
+def ReglaFalsa(func,x0,x1,tol=1e-5):
   #validación del rango que encierra la raíz
-  if FunctionEval(f,x0)*FunctionEval(f,x1)>0:
+  if FunctionEval(func,x0)*FunctionEval(func,x1)>0:
     raise Exception('Rango invalido, no cruza el eje x!!')
   x=x0 #valor inicial
   #encabezado de la tabla de iteracioens
   tabla=pd.DataFrame(columns=['x0','x','x1','f(x0)','f(x)','f(x1)'])
   #valida el criterio de convergencia
-  while np.abs(FunctionEval(f,x))>tol:
-    x=(x0*FunctionEval(f,x1)-x1*FunctionEval(f,x0))/(FunctionEval(f,x1)-FunctionEval(f,x0)) #calcula x, método de Regla Falsa
+  while np.abs(FunctionEval(func,x))>tol:
+    x=(x0*FunctionEval(func,x1)-x1*FunctionEval(func,x0))/(FunctionEval(func,x1)-FunctionEval(func,x0)) #calcula x, método de Regla Falsa
     #inserta la iteración a la tabla
     tabla=tabla.append({'x0':x0,'x':x,'x1':x1,
-                        'f(x0)':FunctionEval(f,x0),'f(x)':FunctionEval(f,x),'f(x1)':FunctionEval(f,x1)},
+                        'f(x0)':FunctionEval(func,x0),'f(x)':FunctionEval(func,x),'f(x1)':FunctionEval(func,x1)},
                        ignore_index=True)
     #valida si la raíz se encuentra en el intervalo [x0,x]
-    if FunctionEval(f,x0)*FunctionEval(f,x)<0:
+    if FunctionEval(func,x0)*FunctionEval(func,x)<0:
       x1=x
     #valida si la raíz se encuentra en el intervalo [x,x1]
     else:
