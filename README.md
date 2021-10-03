@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/egonzalezt/NumericalAnalysis" target="_blank"><img src="https://www.python.org/static/community_logos/python-powered-w.svg" width="400"></a></p>
+<p align="center"><a href="https://github.com/egonzalezt/NumericalAnalysis" target="_blank"><img src="https://user-images.githubusercontent.com/53051438/135735967-6accc965-04e3-43f1-9c88-342681a70dc6.png" width="400"></a></p>
 
 # NumericalAnalysis
 Repository for the project of Numerical analysis 
