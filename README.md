@@ -1,4 +1,6 @@
-<p align="center"><a href="https://github.com/egonzalezt/NumericalAnalysis" target="_blank"><img src="https://user-images.githubusercontent.com/53051438/135735967-6accc965-04e3-43f1-9c88-342681a70dc6.png" width="400"></a></p>
+<p align="center"><a href="https://github.com/egonzalezt/NumericalAnalysis" target="_blank"><img src="https://user-images.githubusercontent.com/53051438/135735988-22ab55a4-f8fd-4903-bde3-ba89d3ebe0e4.png" width="400"></a></p>
+
+
 
 # NumericalAnalysis
 Repository for the project of Numerical analysis 
