@@ -1,7 +1,0 @@
-# Install Your Packages for the project
-pip install mypackage
-pip install Flask
-pip install numpy
-pip install pandas
-pip install matplotlib
-pip install py_expression_eval
