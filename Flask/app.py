@@ -1,8 +1,12 @@
-import flask
+from flask import Flask
+import os
 
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
+from Routes.routes import methods
 
-from Routes import routes
+app = Flask(__name__)
+app.config["DEBUG"] = False
+app.register_blueprint(methods)
 
-app.run()
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run()

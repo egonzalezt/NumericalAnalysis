@@ -8,14 +8,15 @@ from Functions.RaicesMult import SQRTMult
 
 from Decoder.routedecoder import decode
 
-from flask import json, request, jsonify
-from __main__ import app
+from flask import json, request, jsonify, Blueprint
 
-@app.route('/test', methods=['GET'])
+methods = Blueprint('methods', __name__)
+
+@methods.route('/test', methods=['GET'])
 def test():
     return 'it works!'
 
-@app.route('/api/v1/methods/BI', methods=['GET'])
+@methods.route('/api/v1/methods/BI', methods=['GET'])
 def busquedasInc():
 
     params = ["func","x0","delta","iter"]
@@ -27,7 +28,7 @@ def busquedasInc():
     result = SearchIncremental(**values)
     return jsonify(result)
 
-@app.route('/api/v1/methods/Biseccion', methods=['GET'])
+@methods.route('/api/v1/methods/Biseccion', methods=['GET'])
 def biseccion():
 
     params = ["func","x0","x1","tol"]
@@ -39,7 +40,7 @@ def biseccion():
     result = Biseccion(**values)
     return jsonify(result)
 
-@app.route('/api/v1/methods/ReglaFake', methods=['GET'])
+@methods.route('/api/v1/methods/ReglaFake', methods=['GET'])
 def reglaFalsa():
     
     params = ["func","x0","x1","tol"]
@@ -51,7 +52,7 @@ def reglaFalsa():
     result = ReglaFalsa(**values)
     return jsonify(result)
 
-@app.route('/api/v1/methods/FixedPoint', methods=['GET'])
+@methods.route('/api/v1/methods/FixedPoint', methods=['GET'])
 def puntoFijo():
 
     params = ["g","x0","tol","iter"]
@@ -63,7 +64,7 @@ def puntoFijo():
     result = fixedPoint(**values)
     return jsonify(result)
 
-@app.route('/api/v1/methods/Newton', methods=['GET'])
+@methods.route('/api/v1/methods/Newton', methods=['GET'])
 def newton():
 
     params = ["func","dfunc","x0","tol","iter"]
@@ -75,7 +76,7 @@ def newton():
     result = newton(**values)
     return jsonify(result)
 
-@app.route('/api/v1/methods/Secant', methods=['GET'])
+@methods.route('/api/v1/methods/Secant', methods=['GET'])
 def secant():
 
     params = ["func","x0","x1","tol","iter"]
@@ -87,7 +88,7 @@ def secant():
     result = secante(**values)
     return jsonify(result)
 
-@app.route('/api/v1/methods/SQRTMult', methods=['GET'])
+@methods.route('/api/v1/methods/SQRTMult', methods=['GET'])
 def raicesMultiples():
 
     params = ["func","dfunc","d2func","x0","tol","iter"]
@@ -99,6 +100,6 @@ def raicesMultiples():
     result = SQRTMult(**values)
     return jsonify(result)
 
-@app.errorhandler(404)
+@methods.errorhandler(404)
 def resource_not_found(e):
     return 'What are you doing here', 404 
