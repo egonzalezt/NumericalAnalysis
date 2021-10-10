@@ -3,6 +3,12 @@
 # NumericalAnalysis
 Repository for the project of Numerical analysis 
 
+# Heroku 
+
+This project is already uploaded to Heroku 
+
+URL: https://numerical-analysis-docker.herokuapp.com
+
 # Team Members
 
 - David Felipe Garcia [![GitHub-Mark-Light-32px](https://user-images.githubusercontent.com/53051438/128283510-7d92c6a9-9c3e-4b22-b1ce-7786d951ef65.png)](https://github.com/dfgarciac1) dfgarciac1@eafit.edu.co
@@ -36,7 +42,7 @@ Linux: Python3 app.py
 
 ## Incremental Searches
   
-  Endpoint: http://127.0.0.1:5000/api/v1/methods/BI
+  Endpoint: http://127.0.0.1:5000/api/v1/methods/BI or https://numerical-analysis-docker.herokuapp.com/api/v1/methods/BI
   
   example(format json)
   
@@ -51,7 +57,7 @@ Linux: Python3 app.py
 
 ## Bisection
    
-   Endpoint: http://127.0.0.1:5000/api/v1/methods/Biseccion
+   Endpoint: http://127.0.0.1:5000/api/v1/methods/Biseccion or https://numerical-analysis-docker.herokuapp.com/api/v1/methods/Biseccion
    
    example(format json)
    ```json
@@ -67,7 +73,7 @@ Linux: Python3 app.py
 
 ## False Rule
 
-  Endpoint: http://127.0.0.1:5000/api/v1/methods/ReglaFake
+  Endpoint: http://127.0.0.1:5000/api/v1/methods/ReglaFake or https://numerical-analysis-docker.herokuapp.com/api/v1/methods/ReglaFake
 
 ## Newton
 
