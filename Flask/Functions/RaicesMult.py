@@ -3,7 +3,7 @@ from Expression_Evaluator.evaluator import FunctionEval
 def SQRTMult(func,dfunc,d2func,x0,tol,iter):
     Xant = x0
     fant = FunctionEval(func,Xant)
-    Err= 0; 
+    Err= 1000; 
     cont =0;
     Xact = 0;
     while Err>tol and cont<iter:
