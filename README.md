@@ -86,21 +86,21 @@ Linux: Python3 app.py
   example(format json)
    ```json
     {
-    "func": "x^3-x^2-2*x+2+sin(x-1)",
-    "dfunc": "3*x^2-2*x+cos(x-1)-2",
-    "d2func":"6*x-sin(x-1)-2",
-    "x0":0.5,
-    "tol":0.005,
-    "iter":500
+      "func": "x^3-x^2-2*x+2+sin(x-1)",
+      "dfunc": "3*x^2-2*x+cos(x-1)-2",
+      "d2func":"6*x-sin(x-1)-2",
+      "x0":0.5,
+      "tol":0.005,
+      "iter":500
     } 
   ```
   
   Result 
   
    ```json
-   {
-    "Error": 0.0014953131705074396,
-    "Iteraciones": 3,
-    "x": 0.9999995333022881
+    {
+      "Error": 0.0014953131705074396,
+      "Iteraciones": 3,
+      "x": 0.9999995333022881
     }
   ```
