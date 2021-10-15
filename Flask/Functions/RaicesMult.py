@@ -5,7 +5,7 @@ def SQRTMult(func,dfunc,d2func,x0,tol,iter):
     fant = FunctionEval(func,Xant)
     Err= 0; 
     cont =0;
-
+    Xact = 0;
     while Err>tol and cont<iter:
         Xact=(Xant-fant*FunctionEval(dfunc,Xant))/((FunctionEval(dfunc,Xant))**2-fant*FunctionEval(d2func,Xant))
         fact=FunctionEval(func,Xact)
