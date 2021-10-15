@@ -3,13 +3,13 @@ from Expression_Evaluator.evaluator import FunctionEval
 def SQRTMult(func,dfunc,d2func,x0,tol,iter):
     Xant = x0
     fant = FunctionEval(func,Xant)
-    Err= 1000; 
+    Err= 0; 
     cont =0;
 
     while Err>tol and cont<iter:
-        Xact=(Xant-fant*FunctionEval(dfunc,Xant))/((FunctionEval(dfunc,Xant))^2-fant*FunctionEval(d2func,Xant))
+        Xact=(Xant-fant*FunctionEval(dfunc,Xant))/((FunctionEval(dfunc,Xant))**2-fant*FunctionEval(d2func,Xant))
         fact=FunctionEval(func,Xact)
-        E=abs(Xact-Xant)
+        Err=abs(Xact-Xant)
         cont=cont+1
         Xant=Xact
         fant=fact
