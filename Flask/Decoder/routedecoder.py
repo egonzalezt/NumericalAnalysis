@@ -9,7 +9,7 @@ def decode(params:list,values:dict):
     result = ", "
     out_str = result.join(params)    
     for value in values:
-        if value in params:
+        if value in params and values[value]!='':
             finalvals[value] = values[value]
             apiValues.append(value)
         else:
