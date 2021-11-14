@@ -24,11 +24,10 @@ def busquedasInc():
 
     params = ["func","x0","delta","iter"]
     json_data = request.get_json()
-    print(json_data)
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = SearchIncremental(**values)
     return jsonify(result)
 
@@ -40,8 +39,8 @@ def biseccion():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = Biseccion(**values)
     return jsonify(result)
 
@@ -53,8 +52,8 @@ def reglaFalsa():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = ReglaFalsa(**values)
     return jsonify(result)
 
@@ -66,8 +65,8 @@ def puntoFijo():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = fixedPoint(**values)
     return jsonify(result)
 
@@ -79,8 +78,8 @@ def newton():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = newton(**values)
     return jsonify(result)
 
@@ -92,8 +91,8 @@ def secant():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = secante(**values)
     return jsonify(result)
 
@@ -105,8 +104,8 @@ def raicesMultiples():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
-    except Exception as e: 
-        return jsonify('dont send empty data'), 406
+    except ValueError as e:
+        return jsonify(str(e)), 406
     result = SQRTMult(**values)
     return jsonify(result)
 
