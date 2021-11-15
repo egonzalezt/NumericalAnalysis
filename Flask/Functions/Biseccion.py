@@ -1,7 +1,7 @@
 #import de bibliotecas necesarias
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+from plots import plot as pl
 from Expression_Evaluator.evaluator import FunctionEval
 
 '''
@@ -27,6 +27,11 @@ from Expression_Evaluator.evaluator import FunctionEval
 '''
 
 def Biseccion(func,x0,x1,tol=1e-5):
+  iteraciones=0
+  funcxi=list()
+  funcxm=list()
+  funcxf=list()
+  ycordinate=list()
   #validación del rango que encierra la raíz
   if FunctionEval(func,x0)*FunctionEval(func,x1)>0:
     raise Exception('Rango invalido, no cruza el eje x!!')
@@ -35,12 +40,18 @@ def Biseccion(func,x0,x1,tol=1e-5):
   tabla=pd.DataFrame(columns=['x0','x','x1','f(x0)','f(x)','f(x1)'])
   #valida el criterio de convergencia
   while np.abs(FunctionEval(func,x))>tol:
-
     x=(x0+x1)/2 #divide el rango a la mitad, método de Bisección
 
     #inserta la iteración a la tabla
+    fi=FunctionEval(func,x0)
+    fm=FunctionEval(func,x)
+    ff=FunctionEval(func,x1)
+    funcxi.append(fi)
+    funcxm.append(fm)
+    funcxf.append(ff)
+    ycordinate.append(iteraciones)
     tabla=tabla.append({'x0':x0,'x':x,'x1':x1,
-                        'f(x0)':FunctionEval(func,x0),'f(x)':FunctionEval(func,x),'f(x1)':FunctionEval(func,x1)},
+                        'f(x0)':fi,'f(x)':fm,'f(x1)':ff},
                        ignore_index=True)
     #valida si la raíz se encuentra en el intervalo [x0,x]
     if FunctionEval(func,x0)*FunctionEval(func,x)<0:
@@ -48,6 +59,11 @@ def Biseccion(func,x0,x1,tol=1e-5):
     #valida si la raíz se encuentra en el intervalo [x,x1]
     else:
       x0=x
+    iteraciones=iteraciones+1
+  plot=[(ycordinate,funcxi),(ycordinate,funcxm),(ycordinate,funcxf)]
+  idpic = pl.plotGen(plot)
   #retorna la raíz y la tabla de iteraciones
   resultado = tabla.loc[[len(tabla)-1]]
-  return resultado.to_dict()
+  resultado = resultado.to_dict()
+  resultado["idpic"]=idpic
+  return resultado

@@ -6,9 +6,8 @@ Original file is located at
     https://colab.research.google.com/drive/1uXOTUQ5XFYEuTTZB5p7341DYGO0o0YuW
 """
 
-import matplotlib.pyplot as plt
 from Expression_Evaluator.evaluator import FunctionEval
-
+from plots import plot as pl
 """**Problema**: Encontrar la raíz cuadrada de 2 usando el método de **Busqueda Incremental **
 
 $$
@@ -32,6 +31,10 @@ def SearchIncremental(func,x0,delta,iter):
       x : Raíz de la ecuación
   tabla : Tabla de iteraciones
   '''
+
+  xpoints = list()
+  ypoints = list()
+
   Nraices=0 
   fx0 = FunctionEval(func,x0)
   x1= x0 + delta # Incremento para encontrar el primer intervalo
@@ -47,12 +50,16 @@ def SearchIncremental(func,x0,delta,iter):
     x1= x0+delta
     fx1=FunctionEval(func,x1)
     i=i+1
+    xpoints.append(x1)
+    ypoints.append(fx1)
+  idpic = pl.plotGen([(xpoints,ypoints)])
 
   table["fx0"] = fx0
   table["fx1"] = fx1
   table["x0"] = x0
   table["x1"] = x1
   table["iter"] = iter
+  table["idpic"] = idpic
 
   if fx1:
     table["txt"] = f"x1 es raiz {x1}"

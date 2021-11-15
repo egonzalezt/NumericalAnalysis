@@ -1,10 +1,11 @@
 from flask_cors import CORS, cross_origin
+from flask import url_for
 
 from Functions.BusquedasIncrementales import SearchIncremental
 from Functions.Biseccion import Biseccion
 from Functions.ReglaFalsa import ReglaFalsa
 from Functions.PuntoFijo import fixedPoint
-from Functions.Newton import newton
+from Functions.Newton import newton as new
 from Functions.Secante import secante
 from Functions.RaicesMult import SQRTMult
 
@@ -42,6 +43,7 @@ def biseccion():
     except ValueError as e:
         return jsonify(str(e)), 406
     result = Biseccion(**values)
+    print(result)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/ReglaFake', methods=['POST'])
@@ -80,7 +82,7 @@ def newton():
         values = decode(params,json_data)
     except ValueError as e:
         return jsonify(str(e)), 406
-    result = newton(**values)
+    result = new(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/Secant', methods=['POST'])
@@ -108,6 +110,11 @@ def raicesMultiples():
         return jsonify(str(e)), 406
     result = SQRTMult(**values)
     return jsonify(result)
+
+@methods.route('/api/v1/image', methods=['GET'])
+@cross_origin()
+def image():
+    return '<img src=' + url_for('static',filename='test.png') + '>' 
 
 @methods.errorhandler(404)
 @cross_origin()

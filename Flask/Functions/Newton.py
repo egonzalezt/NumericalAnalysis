@@ -1,17 +1,21 @@
 from Expression_Evaluator.evaluator import FunctionEval
+from plots import plot as pl
 
-def newton(func,dfunc,x0,tol,Nmax):
+def newton(func,dfunc,x0,tol,iter):
     Xant = x0 
     fant = FunctionEval(func,Xant)
     Err= 1000; 
     cont =0;
-
-    while Err>tol and cont<Nmax:
+    xpoints = list()
+    ypoints = list()
+    while Err>tol and cont<iter:
         Xact=Xant-fant/(FunctionEval(dfunc,Xant))
         fact=FunctionEval(func,Xact)
-        E=abs(Xact-Xant)
+        Err=abs(Xact-Xant)
         cont=cont+1
         Xant=Xact
         fant=fact
-    
-    return {"x":Xact,"Iteraciones":cont,"Error":Err}
+        ypoints.append(Xact)
+        xpoints.append(cont)
+    idpic=pl.plotGen([(xpoints,ypoints)])
+    return {"x":Xact,"Iteraciones":cont,"Error":Err,"idpic":idpic}
