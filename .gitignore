@@ -1,6 +1,9 @@
 Flask/Decoder/__pycache__
 Flask/Expression_Evaluator/__pycache__
 Flask/Functions/__pycache__
+Flask/Functions/Matrix/__pycache__
 Flask/Routes/__pycache__
 Flask/__pycache__
-
+Flask/plots/__pycache__
+Flask/scripts/__pycache__
+Flask/static/
