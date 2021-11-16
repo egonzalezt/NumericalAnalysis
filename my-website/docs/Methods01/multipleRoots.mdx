@@ -1,0 +1,19 @@
+---
+sidebar_position: 6
+---
+
+# Multiple Roots Method
+
+## Objetive of the Method 
+
+Find a root of a function from an initial value, a tolerance and a number of iterations, in this case it is not necessary to have an interval.
+
+## Generalities
+
+One of the conditions to guarantee the convergence of Newton's method is that f ´ (Xv) has to be different from zero. If when executing Newton's method it is observed that f´ (xn) approaches zero, the speed of the method decreases and there is a possible multiple root.
+
+The multiple root method is also known as the improved Newton method, and basically its structure is very similar except that the second derivative must be found and the following expression must be taken into account:
+
+$Xn + 1 = Xn - \frac {f (Xn) * f´ (Xn)} {f` (Xn) ^ 2 - (f (Xn) * f´´ (Xn))}$
+
+Once the previous expression has been defined, proceed in a similar way to Newton's method

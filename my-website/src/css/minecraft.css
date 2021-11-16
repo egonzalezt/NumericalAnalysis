@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Maincra';
+    src: local('Maincra'), url(../../static/fonts/Maincra.woff) format('woff');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+.test{
+    font-family: Maincra;
+    color: #0004;
+}
