@@ -25,7 +25,7 @@ def ReglaFalsa(func,x0,x1,tol=1e-5):
     raise Exception('Rango invalido, no cruza el eje x!!')
   x=x0 #valor inicial
   #encabezado de la tabla de iteracioens
-  tabla=pd.DataFrame(columns=['x0','x','x1','f(x0)','f(x)','f(x1)'])
+  tabla=pd.DataFrame(columns=['x0','x','x1','fx0','fx','fx1'])
   #valida el criterio de convergencia
   while np.abs(FunctionEval(func,x))>tol:
     x=(x0*FunctionEval(func,x1)-x1*FunctionEval(func,x0))/(FunctionEval(func,x1)-FunctionEval(func,x0)) #calcula x, método de Regla Falsa

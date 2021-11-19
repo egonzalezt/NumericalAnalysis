@@ -6,3 +6,4 @@ matplotlib >= 3.4.3
 py_expression_eval >= 0.3.14
 flask_cors >=3.0.10
 schedule >=1.1.0
+sympy >= 1.9

@@ -36,8 +36,6 @@ def Biseccion(func,x0,x1,tol=1e-5):
   if FunctionEval(func,x0)*FunctionEval(func,x1)>0:
     raise Exception('Rango invalido, no cruza el eje x!!')
   x=x0 #valor inicial
-  #encabezado de la tabla de iteracioens
-  tabla=pd.DataFrame(columns=['x0','x','x1','f(x0)','f(x)','f(x1)'])
   #valida el criterio de convergencia
   while np.abs(FunctionEval(func,x))>tol:
     x=(x0+x1)/2 #divide el rango a la mitad, método de Bisección
@@ -51,7 +49,7 @@ def Biseccion(func,x0,x1,tol=1e-5):
     funcxf.append(ff)
     ycordinate.append(iteraciones)
     tabla=tabla.append({'x0':x0,'x':x,'x1':x1,
-                        'f(x0)':fi,'f(x)':fm,'f(x1)':ff},
+                        'fx0':fi,'fx':fm,'fx1':ff},
                        ignore_index=True)
     #valida si la raíz se encuentra en el intervalo [x0,x]
     if FunctionEval(func,x0)*FunctionEval(func,x)<0:
