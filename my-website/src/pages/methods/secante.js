@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import style from '../../pages/index.module.css';
-
+//la papa
 export const Secante= () =>{
     let initialState={
       "x":'i',
