@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Welcome
 
-welcome to the methods section.
+Welcome to the methods section.
 
 
 ## Content

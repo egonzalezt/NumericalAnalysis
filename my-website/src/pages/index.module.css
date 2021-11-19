@@ -21,3 +21,57 @@
   align-items: center;
   justify-content: center;
 }
+
+form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2px;
+  letter-spacing: 0.25em;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+}
+input[type=text] {
+  width: 100%;
+  margin-top:4em;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=number] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 1px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+button{
+  background-color: #000c0000; /* Green */
+  border-radius:10em;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  margin-top: 6em;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
