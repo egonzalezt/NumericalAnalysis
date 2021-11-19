@@ -10,7 +10,8 @@ export const Matrix= () =>{
 
     var doubles = results.map(function(obj){
       return obj.map(function(number){
-        return number.value
+        let value_float=parseFloat(number.value)
+        return value_float
       }
     )
     })
@@ -31,7 +32,13 @@ export const Matrix= () =>{
           }}
          onSubmit={(values, { setSubmitting }) => {
            console.log("REGISTRE NEN")
-           console.log(values.array = doubles)
+            values.array = doubles
+           console.log(values.array[0])
+           console.log(values.array[1])
+
+           if (doubles[0] == NaN){
+              console.log("OUTO")
+           }
           setTimeout(() => {
             axios.post('http://192.168.1.236:5000/api/v1/methods/BI',JSON.stringify(values),{
              headers: {
