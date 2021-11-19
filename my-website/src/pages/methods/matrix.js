@@ -31,7 +31,7 @@ export const Matrix= () =>{
       
           }}
          onSubmit={(values, { setSubmitting }) => {
-            values.array = doubles
+          values.array = doubles
           setTimeout(() => {
             axios.post('http://192.168.1.236:5000/api/v1/methods/BI',JSON.stringify(values),{
              headers: {
@@ -71,14 +71,16 @@ export const Matrix= () =>{
 
         )}
       </Formik>
-          <div className="container">
-            
+          <div className="container">  
             <ReactInputMatrix maxWidth={1500} maxHeight={400} onMatrixChange={(data) => 
               setResults(data)
-              
             } />
           </div>
-         
+          <div className="container">  
+            <ReactInputMatrix maxWidth={1500} maxHeight={400} onMatrixChange={(data) => 
+              setResults(data)
+            } />
+          </div>
         </div>
       </Layout>
     );
