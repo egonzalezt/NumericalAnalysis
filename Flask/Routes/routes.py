@@ -9,6 +9,7 @@ from Functions.PuntoFijo import fixedPoint
 from Functions.Newton import newton as new
 from Functions.Secante import secante
 from Functions.RaicesMult import SQRTMult
+from Expression_Evaluator.evaluator import FunctionEval as FE
 
 from Decoder.routedecoder import decode
 
@@ -31,8 +32,10 @@ def busquedasInc():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["func"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
+        
     result = SearchIncremental(**values)
     return jsonify(result)
 
@@ -44,6 +47,7 @@ def biseccion():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["func"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
     result = Biseccion(**values)
@@ -57,6 +61,7 @@ def reglaFalsa():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["func"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
     result = ReglaFalsa(**values)
@@ -70,6 +75,7 @@ def puntoFijo():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["g"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
     result = fixedPoint(**values)
@@ -83,6 +89,7 @@ def newton():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["func"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
     derivada = str(sympy.diff(json_data["func"],variable))
@@ -99,6 +106,7 @@ def secant():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["func"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
     result = secante(**values)
@@ -112,6 +120,7 @@ def raicesMultiples():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        FE(values["func"],0)
     except ValueError as e:
         return jsonify(str(e)), 406
     
@@ -135,4 +144,10 @@ def image():
 @methods.errorhandler(404)
 @cross_origin()
 def resource_not_found(e):
+    return jsonify('What are you doing here'), 404 
+
+
+@methods.errorhandler(500)
+@cross_origin()
+def internal_error(error):
     return jsonify('What are you doing here'), 404 
