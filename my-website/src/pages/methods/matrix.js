@@ -29,8 +29,10 @@ function HomepageHeader() {
             })
           })
           values.A = doubles
+          console.log(values)
+
           setTimeout(() => {
-            axios.post('http://192.168.1.236:5000/api/v1/methodsMatrix/diosayudame',JSON.stringify(values),{
+            axios.post('https://analisisapi.herokuapp.com/api/v1/methodsMatrix/gaussLU',JSON.stringify(values),{
              headers: {
                // Overwrite Axios's automatically set Content-Type
                'Content-Type': 'application/json'
