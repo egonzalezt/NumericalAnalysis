@@ -5,10 +5,11 @@ import schedule
 import time
 
 from Routes.routes import methods
-
+from Routes.matrixroutes import methodsMatrix
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.register_blueprint(methods)
+app.register_blueprint(methodsMatrix)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
