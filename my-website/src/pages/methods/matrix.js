@@ -7,14 +7,6 @@ import Swal from 'sweetalert2'
 
 function HomepageHeader() {
   const [results,setResults] = useState([])
-
-  var doubles = results.map(function(obj){
-      return obj.map(function(number){
-        let value_float=parseFloat(number.value)
-        return value_float
-      }
-    )
-  })
   return(
     <div
         style={{
@@ -28,25 +20,28 @@ function HomepageHeader() {
         }}>   <Formik 
         initialValues={{
          array: [],
-          array2:[],
           }}
          onSubmit={(values, { setSubmitting }) => {
+          var doubles = results.map(function(obj){
+            return obj.map(function(number){
+              let value_float=parseFloat(number.value)
+              return value_float
+            })
+          })
           values.array = doubles
-          console.log(values.array)
           setTimeout(() => {
-            axios.post('http://192.168.1.236:5000/api/v1/methods/BI',JSON.stringify(values),{
+            axios.post('http://192.168.1.236:5000/api/v1/methodsMatrix/diosayudame',JSON.stringify(values),{
              headers: {
                // Overwrite Axios's automatically set Content-Type
                'Content-Type': 'application/json'
              }
-           })
-             .then(function (response) {
+           }).then(function (response) {
                  console.log(response);
                  setResults(response.data);
                  Swal.fire({
                    icon: 'success',
                    title: 'Exito!!',
-                   text: response.data.txt,
+                   text: response.data.res,
                    timer: 2000,
                    timerProgressBar: true,
                  })
