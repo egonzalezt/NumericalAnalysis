@@ -1,5 +1,6 @@
 from flask_cors import CORS, cross_origin
 from flask import url_for
+import sympy
 
 from Functions.BusquedasIncrementales import SearchIncremental
 from Functions.Biseccion import Biseccion
@@ -15,6 +16,9 @@ from flask import json, request, jsonify, Blueprint
 
 methods = Blueprint('methods', __name__)
 
+variable = sympy.Symbol('x')
+
+
 @methods.route('/test', methods=['GET'])
 def test():
     return jsonify('it works!')
@@ -23,7 +27,7 @@ def test():
 @cross_origin()
 def busquedasInc():
 
-    params = ["func","x0","delta","iter"]
+    params={"func":str,"x0":(float,int),"delta":(float,int),"iter":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
@@ -36,21 +40,20 @@ def busquedasInc():
 @cross_origin()
 def biseccion():
 
-    params = ["func","x0","x1","tol"]
+    params={"func":str,"x0":(float,int),"x1":(float,int),"tol":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
     except ValueError as e:
         return jsonify(str(e)), 406
     result = Biseccion(**values)
-    print(result)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/ReglaFake', methods=['POST'])
 @cross_origin()
 def reglaFalsa():
     
-    params = ["func","x0","x1","tol"]
+    params={"func":str,"x0":(float,int),"x1":(float,int),"tol":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
@@ -63,7 +66,7 @@ def reglaFalsa():
 @cross_origin()
 def puntoFijo():
 
-    params = ["g","x0","tol","iter"]
+    params={"g":str,"x0":(float,int),"tol":(float,int),"iter":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
@@ -76,20 +79,23 @@ def puntoFijo():
 @cross_origin()
 def newton():
 
-    params = ["func","dfunc","x0","tol","iter"]
+    params={"func":str,"x0":(float,int),"tol":(float,int),"iter":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
     except ValueError as e:
         return jsonify(str(e)), 406
+    derivada = str(sympy.diff(json_data["func"],variable))
+    if '**' in derivada:
+        derivada = derivada.replace('**','^')
+    values["dfunc"]=derivada
     result = new(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/Secant', methods=['POST'])
 @cross_origin()
 def secant():
-
-    params = ["func","x0","x1","tol","iter"]
+    params={"func":str,"x0":(float,int),"x1":(float,int),"tol":(float,int),"iter":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
@@ -102,12 +108,22 @@ def secant():
 @cross_origin()
 def raicesMultiples():
 
-    params = ["func","dfunc","d2func","x0","tol","iter"]
+    params={"func":str,"x0":(float,int),"tol":(float,int),"iter":(float,int)}
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
     except ValueError as e:
         return jsonify(str(e)), 406
+    
+    derivada = str(sympy.diff(json_data["func"],variable))
+    if '**' in derivada:
+        derivada = derivada.replace('**','^')
+    derivada2 = str(sympy.diff(derivada,variable))
+    if '**' in derivada2:
+        derivada2 = derivada2.replace('**','^')
+    values["dfunc"]=derivada
+    values["d2func"]=derivada2
+
     result = SQRTMult(**values)
     return jsonify(result)
 
