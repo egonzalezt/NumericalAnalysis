@@ -9,9 +9,9 @@ export const BusquedasI= () =>{
     let initialState={
       "fx0":'i',
       "fx1":'i',
-      "fx":'i',
+      "iter":'i',
       "idpic":'i',
-      "x":'i',
+      "txt":'i',
       "x0":'i',
       "x1":'i',
 
@@ -34,13 +34,13 @@ export const BusquedasI= () =>{
         initialValues={{
             func: '',
             x0: 0,
-            x1: 0,
-            tol: 0,
+            delta: 0,
+            iter: 0,
             }}
             
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Biseccion',JSON.stringify(values),{
+           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/BI',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
               'Content-Type': 'application/json'
@@ -75,8 +75,8 @@ export const BusquedasI= () =>{
          <Form className='formulario'>
            <Field className='style.form' placeholder='Función' type="text" name="func" />
            <Field className='style.form' placeholder='x0' type="number" name="x0" />
-           <Field className='style.form' placeholder='x1' type="number" name="x1" />
-           <Field className='style.form' placeholder='Tolerancia' type="number" name="tol" />
+           <Field className='style.form' placeholder='Delta' type="number" name="delta" />
+           <Field className='style.form' placeholder='Iteraciones' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>
@@ -90,8 +90,8 @@ export const BusquedasI= () =>{
         <h1 className={style.buttons}>{results.fx0=='i'?'':"Resultados"}</h1>
         <h3 className={style.buttons}>{results.fx0=='i'?'': "fx0: "+results.fx0}</h3>
         <h3 className={style.buttons}>{results.fx1=='i'?'': "fx1: "+results.fx1}</h3>
-        <h3 className={style.buttons}>{results.fx=='i'?'': "x: "+results.fx}</h3>
-        <h3 className={style.buttons}>{results.x=='i'?'': "x: "+results.x}</h3>
+        <h3 className={style.buttons}>{results.iter=='i'?'': "Iteraciones: "+results.iter}</h3>
+        <h3 className={style.buttons}>{results.txt=='i'?'': "TXT: "+results.txt}</h3>
         <h3 className={style.buttons}>{results.x0=='i'?'': "x0: "+results.x0}</h3>
         <h3 className={style.buttons}>{results.x1=='i'?'': "x1: "+results.x1}</h3>
          </div>

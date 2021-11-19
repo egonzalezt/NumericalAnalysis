@@ -38,7 +38,9 @@ export const Secante= () =>{
            axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Secant',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': "*",
+              
             }
           })
             .then(function (response) {

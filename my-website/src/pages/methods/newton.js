@@ -34,13 +34,13 @@ export const Newton= () =>{
         initialValues={{
             func: '',
             x0: 0,
-            x1: 0,
             tol: 0,
+            iter: 0,
             }}
             
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Biseccion',JSON.stringify(values),{
+           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Newton',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
               'Content-Type': 'application/json'
@@ -75,8 +75,8 @@ export const Newton= () =>{
          <Form className='formulario'>
            <Field className='style.form' placeholder='Función' type="text" name="func" />
            <Field className='style.form' placeholder='x0' type="number" name="x0" />
-           <Field className='style.form' placeholder='x1' type="number" name="x1" />
            <Field className='style.form' placeholder='Tolerancia' type="number" name="tol" />
+           <Field className='style.form' placeholder='Iteraciones' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>

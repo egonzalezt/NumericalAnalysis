@@ -55,12 +55,16 @@ input[type=number] {
 input[type=text]:focus {
   border: 3px solid #555;
 }
+.wrapper {
+  text-align: center;
+}
 button{
   background-color: #000c0000; /* Green */
   border-radius:10em;
   color: white;
   padding: 16px 32px;
   text-align: center;
+  justify-content: center;
   margin-top: 6em;
   text-decoration: none;
   display: inline-block;
@@ -80,7 +84,6 @@ img{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-basis: 40%
 }
 h1{
   font-size: 20px;
@@ -89,10 +92,23 @@ h1{
 .contenedor_a{
   display: flex;
   flex-direction: row;
+  border: none;
 }
 .contenedor_b{
   display: flex;
   flex-direction: column;
   padding-right: 5em;
   padding-left: 5em;
+}
+
+#button1{
+  justify-content: center !important;
+  align-items: center;
+  text-align: center;
+ display:flex;
+}
+a{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
