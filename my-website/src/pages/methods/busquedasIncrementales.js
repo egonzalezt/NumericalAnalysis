@@ -5,7 +5,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2'
 import style from '../../pages/index.module.css';
 let a;
-export const Newton= () =>{
+export const BusquedasI= () =>{
     let initialState={
       "fx0":'i',
       "fx1":'i',
@@ -102,4 +102,4 @@ export const Newton= () =>{
     );
 };
 
-export default Newton;
+export default BusquedasI;

@@ -4,18 +4,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import style from '../../pages/index.module.css';
-let a;
-export const Newton= () =>{
+
+export const ReglaFalsa= () =>{
     let initialState={
-      "fx0":'i',
-      "fx1":'i',
-      "fx":'i',
-      "idpic":'i',
       "x":'i',
-      "x0":'i',
-      "x1":'i',
-
-
+      "Iteraciones":'i',
+      "Error":'i',
     }
     const [results,setResults] = useState(initialState)
 
@@ -36,14 +30,16 @@ export const Newton= () =>{
             x0: 0,
             x1: 0,
             tol: 0,
+            iter: 0,
             }}
             
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Biseccion',JSON.stringify(values),{
+           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Secant',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'credentials': 'true'
             }
           })
             .then(function (response) {
@@ -73,10 +69,11 @@ export const Newton= () =>{
        {({ isSubmitting }) => (
            
          <Form className='formulario'>
-           <Field className='style.form' placeholder='Función' type="text" name="func" />
+           <Field className='style.form' placeholder='func' type="text" name="func" />
            <Field className='style.form' placeholder='x0' type="number" name="x0" />
            <Field className='style.form' placeholder='x1' type="number" name="x1" />
-           <Field className='style.form' placeholder='Tolerancia' type="number" name="tol" />
+           <Field className='style.form' placeholder='tol' type="number" name="tol" />
+           <Field className='style.form' placeholder='iter' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>
@@ -85,21 +82,14 @@ export const Newton= () =>{
      </Formik>
 
       </div>
-      <div  className={style.contenedor_a}>
-        <div className={style.contenedor_b}>
-        <h1 className={style.buttons}>{results.fx0=='i'?'':"Resultados"}</h1>
-        <h3 className={style.buttons}>{results.fx0=='i'?'': "fx0: "+results.fx0}</h3>
-        <h3 className={style.buttons}>{results.fx1=='i'?'': "fx1: "+results.fx1}</h3>
-        <h3 className={style.buttons}>{results.fx=='i'?'': "x: "+results.fx}</h3>
+      <div >
+        <h1 className={style.buttons}>{results.x=='i'?'':"Resultados"}</h1>
         <h3 className={style.buttons}>{results.x=='i'?'': "x: "+results.x}</h3>
-        <h3 className={style.buttons}>{results.x0=='i'?'': "x0: "+results.x0}</h3>
-        <h3 className={style.buttons}>{results.x1=='i'?'': "x1: "+results.x1}</h3>
-         </div>
-        <p style={{display: 'none'}}>{results.idpic=='i'?'': a="https://analisisapi.herokuapp.com/static/"+results.idpic +".png" } </p>
-        <img className="img_grafic" src={a}></img>
+        <h3 className={style.buttons}>{results.Iteraciones=='i'?'': "Iteraciones: "+results.Iteraciones}</h3>
+        <h3 className={style.buttons}>{results.Error=='i'?'':"Error: "+results.Error}</h3>
         </div>
       </Layout>
     );
 };
 
-export default Newton;
+export default ReglaFalsa;
