@@ -19,8 +19,8 @@ function HomepageHeader() {
           boxSizing:'border-box',
         }}>   <Formik 
         initialValues={{
-         array: [],
-          }}
+          A: [],
+        }}
          onSubmit={(values, { setSubmitting }) => {
           var doubles = results.map(function(obj){
             return obj.map(function(number){
@@ -28,7 +28,7 @@ function HomepageHeader() {
               return value_float
             })
           })
-          values.array = doubles
+          values.A = doubles
           setTimeout(() => {
             axios.post('http://192.168.1.236:5000/api/v1/methodsMatrix/diosayudame',JSON.stringify(values),{
              headers: {
