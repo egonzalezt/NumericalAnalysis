@@ -100,6 +100,7 @@ const config = {
       },
       footer: {
         style: 'dark',
+        
         links: [
           {
             title: 'Methods (Theory)',

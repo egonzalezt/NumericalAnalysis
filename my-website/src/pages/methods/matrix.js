@@ -1,37 +1,38 @@
 import Layout from '@theme/Layout';
+import ReactInputMatrix from "react-input-matrix";
 import React, { useState, useEffect } from "react";
-import ReactInputMatrix from "react-input-matrix"
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios'
 import Swal from 'sweetalert2'
-export const Matrix= () =>{
-  
-    const [results,setResults] = useState([])
 
-    var doubles = results.map(function(obj){
+function HomepageHeader() {
+  const [results,setResults] = useState([])
+
+  var doubles = results.map(function(obj){
       return obj.map(function(number){
         let value_float=parseFloat(number.value)
         return value_float
       }
     )
-    })
- 
-    return (
-      <Layout title="Hello">
-        <div
+  })
+  return(
+    <div
         style={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           height: '50vh',
           fontSize: '20px',
+          margin:'0px',
+          boxSizing:'border-box',
         }}>   <Formik 
         initialValues={{
          array: [],
-      
+          array2:[],
           }}
          onSubmit={(values, { setSubmitting }) => {
           values.array = doubles
+          console.log(values.array)
           setTimeout(() => {
             axios.post('http://192.168.1.236:5000/api/v1/methods/BI',JSON.stringify(values),{
              headers: {
@@ -71,19 +72,22 @@ export const Matrix= () =>{
 
         )}
       </Formik>
-          <div className="container">  
-            <ReactInputMatrix maxWidth={1500} maxHeight={400} onMatrixChange={(data) => 
+          <div>
+            <ReactInputMatrix maxWidth={500} maxHeight={220} onMatrixChange={(data) => 
               setResults(data)
             } />
           </div>
-          <div className="container">  
-            <ReactInputMatrix maxWidth={1500} maxHeight={400} onMatrixChange={(data) => 
-              setResults(data)
-            } />
-          </div>
+         
         </div>
-      </Layout>
-    );
-};
+  )
+}
 
-export default Matrix;
+export default function Matrix() {
+  return (
+    <Layout>
+      <main>
+        <HomepageHeader />
+      </main>
+    </Layout>
+  );
+}

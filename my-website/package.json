@@ -30,6 +30,7 @@
     "react-tetris": "^0.2.0",
     "rehype-katex": "^4.0.0",
     "remark-math": "^3.0.1",
+    "styled-components": "^5.3.3",
     "sweetalert2": "^11.1.10",
     "url-loader": "^4.1.1"
   },
