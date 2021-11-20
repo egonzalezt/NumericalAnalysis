@@ -28,7 +28,10 @@ def ReglaFalsa(func,x0,x1,tol=1e-5):
   tabla=pd.DataFrame(columns=['x0','x','x1','fx0','fx','fx1'])
   #valida el criterio de convergencia
   while np.abs(FunctionEval(func,x))>tol:
-    x=(x0*FunctionEval(func,x1)-x1*FunctionEval(func,x0))/(FunctionEval(func,x1)-FunctionEval(func,x0)) #calcula x, método de Regla Falsa
+    function=(FunctionEval(func,x1)-FunctionEval(func,x0))
+    if(function==0):
+      raise Exception('Avoid divide by zero')
+    x=(x0*FunctionEval(func,x1)-x1*FunctionEval(func,x0))/function #calcula x, método de Regla Falsa
     #inserta la iteración a la tabla
     tabla=tabla.append({'x0':x0,'x':x,'x1':x1,
                         'f(x0)':FunctionEval(func,x0),'f(x)':FunctionEval(func,x),'f(x1)':FunctionEval(func,x1)},

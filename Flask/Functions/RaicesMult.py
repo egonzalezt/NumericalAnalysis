@@ -7,7 +7,10 @@ def SQRTMult(func,dfunc,d2func,x0,tol,iter):
     cont =0;
     Xact = 0;
     while Err>tol and cont<iter:
-        Xact=Xant-((fant*FunctionEval(dfunc,Xant))/((FunctionEval(dfunc,Xant))**2-fant*FunctionEval(d2func,Xant)))
+        function=((FunctionEval(dfunc,Xant))**2-fant*FunctionEval(d2func,Xant))
+        if(function==0):
+            raise Exception('Avoid divide by zero')
+        Xact=Xant-((fant*FunctionEval(dfunc,Xant))/function)
         fact=FunctionEval(func,Xact)
         Err=abs(Xact-Xant)
         cont=cont+1

@@ -9,7 +9,10 @@ def newton(func,dfunc,x0,tol,iter):
     xpoints = list()
     ypoints = list()
     while Err>tol and cont<iter:
-        Xact=Xant-fant/(FunctionEval(dfunc,Xant))
+        function =(FunctionEval(dfunc,Xant))
+        if(function==0):
+            raise Exception('Avoid divide by zero')
+        Xact=Xant-fant/function
         fact=FunctionEval(func,Xact)
         Err=abs(Xact-Xant)
         cont=cont+1

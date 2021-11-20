@@ -48,9 +48,7 @@ def Biseccion(func,x0,x1,tol=1e-5):
     funcxm.append(fm)
     funcxf.append(ff)
     ycordinate.append(iteraciones)
-    tabla=tabla.append({'x0':x0,'x':x,'x1':x1,
-                        'fx0':fi,'fx':fm,'fx1':ff},
-                       ignore_index=True)
+    tabla={'x0':x0,'x':x,'x1':x1,'fx0':fi,'fx':fm,'fx1':ff}
     #valida si la raíz se encuentra en el intervalo [x0,x]
     if FunctionEval(func,x0)*FunctionEval(func,x)<0:
       x1=x
@@ -61,7 +59,5 @@ def Biseccion(func,x0,x1,tol=1e-5):
   plot=[(ycordinate,funcxi),(ycordinate,funcxm),(ycordinate,funcxf)]
   idpic = pl.plotGen(plot)
   #retorna la raíz y la tabla de iteraciones
-  resultado = tabla.loc[[len(tabla)-1]]
-  resultado = resultado.to_dict()
-  resultado["idpic"]=idpic
-  return resultado
+  tabla["idpic"]=idpic
+  return tabla

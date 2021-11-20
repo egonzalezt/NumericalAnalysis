@@ -7,7 +7,10 @@ def secante(func,x0,x1,tol,iter):
     cont =1;
 
     while Err>tol and cont<iter:
-        Xact= x1-(f1*(x1-x0))/(f1-f0)
+        function=(f1-f0)
+        if(function==0):
+            raise Exception('Avoid divide by zero')
+        Xact= x1-(f1*(x1-x0))/function
         fact=FunctionEval(func,Xact)
         Err=abs(Xact-x1)
         cont=cont+1

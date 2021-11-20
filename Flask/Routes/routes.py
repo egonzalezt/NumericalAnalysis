@@ -48,9 +48,9 @@ def biseccion():
     try:
         values = decode(params,json_data)
         FE(values["func"],0)
+        result = Biseccion(**values)
     except ValueError as e:
         return jsonify(str(e)), 406
-    result = Biseccion(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/ReglaFake', methods=['POST'])
@@ -62,9 +62,9 @@ def reglaFalsa():
     try:
         values = decode(params,json_data)
         FE(values["func"],0)
+        result = ReglaFalsa(**values)
     except ValueError as e:
         return jsonify(str(e)), 406
-    result = ReglaFalsa(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/FixedPoint', methods=['POST'])
@@ -90,13 +90,13 @@ def newton():
     try:
         values = decode(params,json_data)
         FE(values["func"],0)
+        derivada = str(sympy.diff(json_data["func"],variable))
+        if '**' in derivada:
+            derivada = derivada.replace('**','^')
+        values["dfunc"]=derivada
+        result = new(**values)
     except ValueError as e:
         return jsonify(str(e)), 406
-    derivada = str(sympy.diff(json_data["func"],variable))
-    if '**' in derivada:
-        derivada = derivada.replace('**','^')
-    values["dfunc"]=derivada
-    result = new(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/Secant', methods=['POST'])
@@ -107,9 +107,9 @@ def secant():
     try:
         values = decode(params,json_data)
         FE(values["func"],0)
+        result = secante(**values)
     except ValueError as e:
         return jsonify(str(e)), 406
-    result = secante(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/methods/SQRTMult', methods=['POST'])
@@ -121,19 +121,19 @@ def raicesMultiples():
     try:
         values = decode(params,json_data)
         FE(values["func"],0)
+
+        derivada = str(sympy.diff(json_data["func"],variable))
+        if '**' in derivada:
+            derivada = derivada.replace('**','^')
+        derivada2 = str(sympy.diff(derivada,variable))
+        if '**' in derivada2:
+            derivada2 = derivada2.replace('**','^')
+        values["dfunc"]=derivada
+        values["d2func"]=derivada2
+        result = SQRTMult(**values)
+
     except ValueError as e:
         return jsonify(str(e)), 406
-    
-    derivada = str(sympy.diff(json_data["func"],variable))
-    if '**' in derivada:
-        derivada = derivada.replace('**','^')
-    derivada2 = str(sympy.diff(derivada,variable))
-    if '**' in derivada2:
-        derivada2 = derivada2.replace('**','^')
-    values["dfunc"]=derivada
-    values["d2func"]=derivada2
-
-    result = SQRTMult(**values)
     return jsonify(result)
 
 @methods.route('/api/v1/image', methods=['GET'])
