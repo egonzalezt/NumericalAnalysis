@@ -12,6 +12,8 @@ from Functions.Matrix.jacobi import jacobi
 from Functions.Matrix.quadratic import quadratic
 from Functions.Matrix.vandermonde import vandermonde as vm
 from Functions.Matrix.lagrange import Lagrange as lg
+from Functions.Matrix.gaussPivTotal import gaussTotal
+from Functions.Matrix.sustRegresiva import regresivaList
 
 #Scripts
 from scripts.convert import convert
@@ -79,6 +81,26 @@ def gaussPivparcial():
     values["b"]=b
     if(quadratic(values["A"])):
         result = gaussPipo(**values)
+        return jsonify(result)
+    else:
+        return jsonify({"err":"Matrix must be quadratic N=M"}), 406
+
+@methodsMatrix.route('/api/v1/methodsMatrix/gaussTotal', methods=['POST'])
+@cross_origin()
+def gaussPivtotal():
+    params={"A":(list)}
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+        onlyNum(values["A"])
+    except ValueError as e:
+        return jsonify({"err":str(e)}), 406
+    
+    A,b= convert(values["A"])
+    if(quadratic(A)):
+        result = gaussTotal(values["A"])
+        matrix= A1,b1= convert(result)
+        result = regresivaList(A1,b1)
         return jsonify(result)
     else:
         return jsonify({"err":"Matrix must be quadratic N=M"}), 406
