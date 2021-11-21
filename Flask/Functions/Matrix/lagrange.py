@@ -1,10 +1,10 @@
-def Lagrange(x,y,xp):
+def Lagrange(X,Y,xp):
     # Reading interpolation point
     
     # Set interpolated value initially to zero
     yp = 0
 
-    n = len(x)
+    n = len(X)
     # Implementing Lagrange Interpolation
     for i in range(n):
 
@@ -12,9 +12,9 @@ def Lagrange(x,y,xp):
 
         for j in range(n):
             if i != j:
-                p = p * (xp - x[j])/(x[i] - x[j])
+                p = p * (xp - X[j])/(X[i] - X[j])
 
-        yp = yp + p * y[i]    
+        yp = yp + p * Y[i]    
 
     # Displaying output
     return {"Result":f'Interpolated value at {xp} is {yp}.'}

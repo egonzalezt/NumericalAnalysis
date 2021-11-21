@@ -3,6 +3,7 @@ from flask import url_for
 from Decoder.routedecoder import decode
 from flask import json, request, jsonify, Blueprint
 
+#Functions
 from Functions.Matrix.gaussLU import gaussLU as LU
 from Functions.Matrix.gaussNormal import gaussNormal as Normal
 from Functions.Matrix.gaussPivPartial import gaussPartialPiv as gaussPipo
@@ -10,7 +11,12 @@ from Functions.Matrix.gaussSeidel import gaussSeidel as seidel
 from Functions.Matrix.jacobi import jacobi
 from Functions.Matrix.quadratic import quadratic
 from Functions.Matrix.vandermonde import vandermonde as vm
+from Functions.Matrix.lagrange import Lagrange as lg
+
+#Scripts
 from scripts.convert import convert
+from scripts.onlyNum import onlyNum
+from scripts.isFloat import check_float
 
 methodsMatrix = Blueprint('methodsmatrix', __name__)
 
@@ -25,8 +31,9 @@ def gaussLU():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        onlyNum(values["A"])
     except ValueError as e:
-        return jsonify(str(e)), 406
+        return jsonify({"err":str(e)}), 406
     A,b= convert(values["A"])
     values["A"]=A
     values["b"]=b
@@ -43,8 +50,9 @@ def gauss():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        onlyNum(values["A"])
     except ValueError as e:
-        return jsonify(str(e)), 406
+        return jsonify({"err":str(e)}), 406
     A,b= convert(values["A"])
     values["A"]=A
     values["b"]=b
@@ -61,8 +69,10 @@ def gaussPivparcial():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        print(type(values["A"]))
+        onlyNum(values["A"])
     except ValueError as e:
-        return jsonify(str(e)), 406
+        return jsonify({"err":str(e)}), 406
     
     A,b= convert(values["A"])
     values["A"]=A
@@ -80,8 +90,9 @@ def gaussSeidel():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        onlyNum(values["A"])
     except ValueError as e:
-        return jsonify(str(e)), 406
+        return jsonify({"err":str(e)}), 406
 
     A,b= convert(values["A"])
     values["A"]=A
@@ -99,8 +110,9 @@ def Jacobi():
     json_data = request.get_json()
     try:
         values = decode(params,json_data)
+        onlyNum(values["A"])
     except ValueError as e:
-        return jsonify(str(e)), 406
+        return jsonify({"err":str(e)}), 406
 
     A,b= convert(values["A"])
     values["A"]=A
@@ -119,17 +131,38 @@ def Vandermonde():
     try:
         values = decode(params,json_data)
         err = []
-        X = [float(x) if x.isdigit() is not False else err.append(x) for x in values["X"].split(',')]
-        Y = [float(y) if y.isdigit() is not False else err.append(y) for y in values["Y"].split(',')]
+        X = [float(x) if check_float(x) is not False else err.append(x) for x in values["X"].split(',')]
+        Y = [float(y) if check_float(y) is not False else err.append(y) for y in values["Y"].split(',')]
         if(len(err)>0):
             raise ValueError("Please send numeric data")
         if(len(X)!=len(Y)):
             raise ValueError("Incomplete points")     
     except ValueError as e:
-        return jsonify(str(e)), 406
+        return jsonify({"err":str(e)}), 406
 
     result = vm(X,Y)
     return jsonify(result)
+
+@methodsMatrix.route('/api/v1/methodsMatrix/Lagrange', methods=['POST'])
+@cross_origin()
+def Lagrange():
+    params={"X":(str),"Y":(str),"xp":(float,int)}
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+        err = []
+        X = [float(x) if check_float(x) is not False else err.append(x) for x in values["X"].split(',')]
+        Y = [float(y) if check_float(y) is not False else err.append(y) for y in values["Y"].split(',')]
+        if(len(err)>0):
+            raise ValueError("Please send numeric data")
+        if(len(X)!=len(Y)):
+            raise ValueError("Incomplete points")     
+    except ValueError as e:
+        return jsonify({"err":str(e)}), 406
+
+    result = lg(X,Y,values["xp"])
+    return jsonify(result)
+
 
 @methodsMatrix.route('/api/v1/methodsMatrix/diosayudame', methods=['POST'])
 @cross_origin()
@@ -137,3 +170,14 @@ def Prueba():
     json_data = request.get_json()
     A,b= convert(json_data["A"])
     return jsonify({"res":A}), 201
+
+@methodsMatrix.errorhandler(404)
+@cross_origin()
+def resource_not_found(e):
+    return jsonify('What are you doing here'), 404 
+
+
+@methodsMatrix.errorhandler(500)
+@cross_origin()
+def internal_error(error):
+    return jsonify('What are you doing here'), 500

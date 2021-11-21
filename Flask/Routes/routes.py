@@ -150,4 +150,4 @@ def resource_not_found(e):
 @methods.errorhandler(500)
 @cross_origin()
 def internal_error(error):
-    return jsonify('What are you doing here'), 404 
+    return jsonify('What are you doing here'), 500 

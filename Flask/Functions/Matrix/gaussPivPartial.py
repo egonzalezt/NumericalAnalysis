@@ -33,5 +33,5 @@ def gaussPartialPiv(A,b):
             sum_ax+= a[f,j]*x[j]
         x[f]=(b[f]-sum_ax)/a[f,f]
 
-    return {"A":a.tolist(),"X":x.tolist()}
+    return {"MSG":"Sucess","A":a.tolist(),"X":x.tolist()}
     

@@ -29,9 +29,9 @@ def gaussNormal(A,b):
             for j in range(i+1,n):
                 sum_ax+= A[i,j]*X[j]
             X[i]=(b[i]-sum_ax)/A[i,i]
-        return {"A":A.tolist(),"X":X.tolist()}
+        return {"MSG":"sucess","A":A.tolist(),"X":X.tolist()}
     else:
-        return("System with no solution try other method")
+        return {"MSG":"System with no solution try other method"}
 '''
 print(A)
 print(X)
