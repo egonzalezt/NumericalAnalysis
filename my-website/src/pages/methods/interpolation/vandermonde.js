@@ -3,26 +3,17 @@ import React,{useState,useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import style from '../../pages/index.module.css';
+import style from "../../../pages/index.module.css"
 let a;
 export const BusquedasI= () =>{
     let initialState={
-      "fx0":'i',
-      "fx1":'i',
-      "iter":'i',
-      "idpic":'i',
-      "txt":'i',
-      "x0":'i',
-      "x1":'i',
-
-
+      "Y":'i',
+      "X":'i',
     }
     const [results,setResults] = useState(initialState)
 
     return (
       <Layout title="Hello">
-        <p>Welcome to method secante</p>
-
         <div
         style={{
           display: 'flex',
@@ -30,17 +21,16 @@ export const BusquedasI= () =>{
           alignItems: 'center',
           height: '50vh',
           fontSize: '20px',
-        }}>        <Formik 
+        }}>        
+        <Formik 
         initialValues={{
-            func: '',
-            x0: 0,
-            delta: 0,
-            iter: 0,
+          "Y":0,
+          "X":0,
         }}
             
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/BI',JSON.stringify(values),{
+           axios.post('https://analisisapi.herokuapp.com/api/v1/methodsMatrix/vandermonde',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
               'Content-Type': 'application/json'
@@ -52,7 +42,7 @@ export const BusquedasI= () =>{
                 Swal.fire({
                   icon: 'success',
                   title: 'Exito!!',
-                  text: response.data.txt,
+                  text: response.data.MSG,
                   timer: 2000,
                   timerProgressBar: true,
                 })
@@ -62,7 +52,7 @@ export const BusquedasI= () =>{
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: error.response.data,
+              text: error.response.data.err,
               })
             });
            setSubmitting(false);
@@ -73,10 +63,8 @@ export const BusquedasI= () =>{
        {({ isSubmitting }) => (
            
          <Form className='formulario'>
-           <Field className='style.form' placeholder='Función' type="text" name="func" />
-           <Field className='style.form' placeholder='x0' type="number" name="x0" />
-           <Field className='style.form' placeholder='Delta' type="number" name="delta" />
-           <Field className='style.form' placeholder='Iteraciones' type="number" name="iter" />
+           <Field className='style.form' placeholder='X' type="text" name="X" />
+           <Field className='style.form' placeholder='Y' type="text" name="Y" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>
@@ -87,16 +75,10 @@ export const BusquedasI= () =>{
       </div>
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>
-        <h1 className={style.buttons}>{results.fx0=='i'?'':"Resultados"}</h1>
-        <h3 className={style.buttons}>{results.fx0=='i'?'': "fx0: "+results.fx0}</h3>
-        <h3 className={style.buttons}>{results.fx1=='i'?'': "fx1: "+results.fx1}</h3>
-        <h3 className={style.buttons}>{results.iter=='i'?'': "Iteraciones: "+results.iter}</h3>
-        <h3 className={style.buttons}>{results.txt=='i'?'': "TXT: "+results.txt}</h3>
-        <h3 className={style.buttons}>{results.x0=='i'?'': "x0: "+results.x0}</h3>
-        <h3 className={style.buttons}>{results.x1=='i'?'': "x1: "+results.x1}</h3>
+        <h1 className={style.buttons}>{results.X=='i'?'':"Resultados"}</h1>
+        <h3 className={style.buttons}>{results.X=='i'?'': "A: "+JSON.stringify(results.A)}</h3>
+        <h3 className={style.buttons}>{results.X=='i'?'': "X: "+JSON.stringify(results.X)}</h3>
          </div>
-        <p style={{display: 'none'}}>{results.idpic=='i'?'': a="https://analisisapi.herokuapp.com/static/"+results.idpic +".png" } </p>
-        <img className="img_grafic" src={a}></img>
         </div>
       </Layout>
     );

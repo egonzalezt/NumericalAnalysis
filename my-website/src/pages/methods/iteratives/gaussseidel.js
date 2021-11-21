@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import Swal from "sweetalert2";
-import style from "../../pages/index.module.css";
+import style from "../../../pages/index.module.css"
 
 function HomepageHeader() {
   const [results, setResults] = useState([]);
@@ -26,6 +26,8 @@ function HomepageHeader() {
       <Formik
         initialValues={{
           A: [],
+          tol:0,
+          iter:0
         }}
         onSubmit={(values, { setSubmitting }) => {
           var doubles = results.map(function (obj) {
@@ -40,7 +42,7 @@ function HomepageHeader() {
           setTimeout(() => {
             axios
               .post(
-                "https://analisisapi.herokuapp.com/api/v1/methodsMatrix/gaussLU",
+                "https://analisisapi.herokuapp.com/api/v1/methodsMatrix/gaussSeidel",
                 JSON.stringify(values),
                 {
                   headers: {
@@ -65,7 +67,7 @@ function HomepageHeader() {
                 Swal.fire({
                   icon: "error",
                   title: "Oops...",
-                  text: error.response.data,
+                  text: error.response.data.err,
                 });
               });
             setSubmitting(false);
@@ -74,6 +76,8 @@ function HomepageHeader() {
       >
         {({ isSubmitting }) => (
           <Form className="formulario">
+            <Field className='style.form' placeholder='Tolerance' type="number" name="tol" />
+            <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
             <button
               type="submit"
               className="style.button"
@@ -98,19 +102,13 @@ function HomepageHeader() {
       <div className={style.contenedor_b}>
 
       <h1 className={style.buttons}>
-              {results2.L == "i" ? "" : "Resultados"}
+              {results2.Eq == null ? "" : "Resultados"}
             </h1>
             <h3 className={style.buttons}>
-              {results2.L == "i" ? "" : "L: " + JSON.stringify(results2.L) }
+              {results2.Eq == null ? "" : "Equations: " + JSON.stringify(results2.Eq) }
             </h3>
             <h3 className={style.buttons}>
-              {results2.U == "i" ? "" : "U: " + JSON.stringify(results2.U)}
-            </h3>
-            <h3 className={style.buttons}>
-              {results2.X == "i" ? "" : "X: " + JSON.stringify(results2.X)}
-            </h3>
-            <h3 className={style.buttons}>
-              {results2.Z == "i" ? "" : "Z: " +JSON.stringify(results2.Z)}
+              {results2.X == null ? "" : "X: " + JSON.stringify(results2.X)}
             </h3>
             </div>
             </div>
