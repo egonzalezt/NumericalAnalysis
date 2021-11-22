@@ -21,6 +21,6 @@ $X_2 = X_1 - \frac {f(X_1)*(X_1-X_0)} {f(X_1)-f(X_0)}$
 
 Two initial approximations $X_1$ and $X_0$ must be chosen.
 
-Calculate $X_2$= Expression ---------- $X_n$ = Expression $(n-1)$
+Calculate $X_2$= Expression to $X_n$ = Expression $(n-1)$
 
 And repeat the previous step until an approximation is reached.

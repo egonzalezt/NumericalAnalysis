@@ -20,13 +20,13 @@ $(x_0,y_0),(x_1,y_1),···,(x_n,y_n)$
 
 is to write a linear system of equations as follows
 
-$P_n(x_0)=y_0 ⇒ a_0+a_1x_0+a_2x_0^2+···+a_{n−1}x_0^{n−1}+a_nx_0^n=y_0$
+$P_n(x_0)=y_0 ⇒ a_0+a_1x_0+a_2x_0^2+···+a_{n-1}x_0^{n-1}+a_nx_0^n=y_0$
 
-$P_n(x_0)=y_0 ⇒ a_0+a_1x_1+a_2x_1^2+···+a_{n−1}x_1^{n−1}+a_nx_1^n=y_1$
+$P_n(x_0)=y_0 ⇒ a_0+a_1x_1+a_2x_1^2+···+a_{n-1}x_1^{n-1}+a_nx_1^n=y_1$
 
 $..⇒..$
 
-$P_n(x_0)=y_n ⇒ a_0+a_1x_n+a_2x_n^2+···+a_{n−1}x_n^{n−1}+a_nx_n^n=y_n$
+$P_n(x_0)=y_n ⇒ a_0+a_1x_n+a_2x_n^2+···+a_{n-1}x_n^{n-1}+a_nx_n^n=y_n$
 
 or, in matrix form:
 
