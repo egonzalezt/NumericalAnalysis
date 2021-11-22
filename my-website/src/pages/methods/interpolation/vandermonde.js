@@ -34,6 +34,7 @@ export const BusquedasI= () =>{
 
     return (
       <Layout title="Hello">
+        <center style={{fontSize:'30px',fontWeight:'bold'}}>Vandermonde Method</center>
         <div
         style={{
           display: 'flex',
@@ -85,7 +86,7 @@ export const BusquedasI= () =>{
            <Field className='style.form' placeholder='X' type="text" name="X" />
            <Field className='style.form' placeholder='Y' type="text" name="Y" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
-             Registrar
+             Send
            </button>
          </Form>
        )}

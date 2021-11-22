@@ -19,6 +19,7 @@ export const Bisseccion = () => {
 
   return (
     <Layout title="Hello">
+      <center style={{fontSize:'30px',fontWeight:'bold'}}>Bisection method</center>
       <div
         style={{
           display: "flex",
@@ -104,7 +105,7 @@ export const Bisseccion = () => {
                 className="style.button"
                 disabled={isSubmitting}
               >
-                Registrar
+                Send
               </button>
             </Form>
           )}

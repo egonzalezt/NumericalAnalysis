@@ -1,7 +1,21 @@
 # Newton (Split Differences) 
 
+Welcome to help section of Split Differences explore how to use this method and what information you need to use it
+
 ## How to use it
 
-## Explore the method
+To use this method you need these parameters
 
-[Go to method](../../methods/interpolation/newton)
+![Input](../../static/img/blog/newtoninterpol.png)
+
+- $X$: x coordinates
+- $Y$: y coordinates
+
+### Example 
+
+-   $X$: 0,1,2,5
+-   $Y$: 2,3,12,147
+
+$\colorbox{red} {Express X and Y coordinates as values separated by a comma}$
+
+## [Go to method](../../methods/interpolation/newton)

@@ -42,8 +42,9 @@ const config = {
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+          editUrl:'https://github.com/egonzalezt/NumericalAnalysis/main/',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -120,7 +121,7 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'About docusaurus',
             items: [
               {
                 label: 'Stack Overflow',

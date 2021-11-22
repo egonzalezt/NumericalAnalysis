@@ -15,7 +15,7 @@ export const Secante= () =>{
 
     return (
       <Layout title="Hello">
-
+        <center style={{fontSize:'30px',fontWeight:'bold'}}>Secant Method</center>
         <div
         style={{
           display: 'flex',
@@ -75,7 +75,7 @@ export const Secante= () =>{
            <Field className='style.form' placeholder='Tolerance' type="number" name="tol" />
            <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
-             Registrar
+             Send
            </button>
          </Form>
        )}

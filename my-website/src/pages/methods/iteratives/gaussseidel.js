@@ -22,6 +22,8 @@ function HomepageHeader() {
   const [results2, setResults2] = useState([]);
 
   return (
+    <div>
+      <center style={{fontSize:'30px',fontWeight:'bold'}}>Gauss Seidel</center>
     <div
       style={{
         display: "flex",
@@ -37,8 +39,8 @@ function HomepageHeader() {
       <Formik
         initialValues={{
           A: [],
-          tol:0,
-          iter:0
+          tol:'',
+          iter:''
         }}
         onSubmit={(values, { setSubmitting }) => {
           var doubles = results.map(function (obj) {
@@ -94,7 +96,7 @@ function HomepageHeader() {
               className="style.button"
               disabled={isSubmitting}
             >
-              Registrar
+              Send
             </button>
           </Form>
         )}
@@ -133,6 +135,7 @@ function HomepageHeader() {
       </div>
       </div>
 
+    </div>
     </div>
   );
 }

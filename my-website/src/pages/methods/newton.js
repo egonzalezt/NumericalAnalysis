@@ -21,7 +21,7 @@ export const Newton= () =>{
 
     return (
       <Layout title="Hello">
-
+        <center style={{fontSize:'30px',fontWeight:'bold'}}>Newton Method</center>
         <div
         style={{
           display: 'flex',
@@ -72,12 +72,12 @@ export const Newton= () =>{
        {({ isSubmitting }) => (
            
          <Form className='formulario'>
-           <Field className='style.form' placeholder='Función' type="text" name="func" />
-           <Field className='style.form' placeholder='x0' type="number" name="x0" />
-           <Field className='style.form' placeholder='Tolerancia' type="number" name="tol" />
-           <Field className='style.form' placeholder='Iteraciones' type="number" name="iter" />
+           <Field className='style.form' placeholder='Function' type="text" name="func" />
+           <Field className='style.form' placeholder='X0' type="number" name="x0" />
+           <Field className='style.form' placeholder='Tolerance' type="number" name="tol" />
+           <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
-             Registrar
+             Send
            </button>
          </Form>
        )}
@@ -91,12 +91,9 @@ export const Newton= () =>{
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>
         <h1 className={style.buttons}>{results.fx0=='i'?'':"Resultados"}</h1>
-        <h3 className={style.buttons}>{results.fx0=='i'?'': "fx0: "+results.fx0}</h3>
-        <h3 className={style.buttons}>{results.fx1=='i'?'': "fx1: "+results.fx1}</h3>
-        <h3 className={style.buttons}>{results.fx=='i'?'': "x: "+results.fx}</h3>
-        <h3 className={style.buttons}>{results.x=='i'?'': "x: "+results.x}</h3>
-        <h3 className={style.buttons}>{results.x0=='i'?'': "x0: "+results.x0}</h3>
-        <h3 className={style.buttons}>{results.x1=='i'?'': "x1: "+results.x1}</h3>
+        <h3 className={style.buttons}>{results.fx0=='i'?'': "Error: "+results.Error}</h3>
+        <h3 className={style.buttons}>{results.fx1=='i'?'': "Iterations: "+results.Iteraciones}</h3>
+        <h3 className={style.buttons}>{results.x=='i'?'': "X: "+results.x}</h3>
          </div>
         <p style={{display: 'none'}}>{results.idpic=='i'?'': a="https://analisisapi.herokuapp.com/static/"+results.idpic +".png" } </p>
         <img className="img_grafic" src={a}></img>

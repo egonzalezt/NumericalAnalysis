@@ -14,6 +14,7 @@ export const BusquedasI= () =>{
 
     return (
       <Layout title="Hello">
+        <center style={{fontSize:'30px',fontWeight:'bold'}}>Lagrange Method</center>
         <div
         style={{
           display: 'flex',
@@ -26,7 +27,7 @@ export const BusquedasI= () =>{
         initialValues={{
           "Y":"",
           "X":"",
-          "xp":0
+          "xp":''
         }}
             
        onSubmit={(values, { setSubmitting }) => {
@@ -68,7 +69,7 @@ export const BusquedasI= () =>{
            <Field className='style.form' placeholder='Y' type="text" name="Y" />
            <Field className='style.form' placeholder='xp' type="number" name="xp" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
-             Registrar
+             Send
            </button>
          </Form>
        )}

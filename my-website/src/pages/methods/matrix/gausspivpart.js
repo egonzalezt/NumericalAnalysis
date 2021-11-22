@@ -31,6 +31,8 @@ function HomepageHeader() {
   const [results2, setResults2] = useState([]);
 
   return (
+    <div>
+      <center style={{fontSize:'30px',fontWeight:'bold'}}>Gaussian partial pivoting Method</center>
     <div
       style={{
         display: "flex",
@@ -98,7 +100,7 @@ function HomepageHeader() {
               className="style.button"
               disabled={isSubmitting}
             >
-              Registrar
+              Send
             </button>
           </Form>
         )}
@@ -136,6 +138,7 @@ function HomepageHeader() {
         </h3>
         </div>
         </div>
+    </div>
     </div>
   );
 }

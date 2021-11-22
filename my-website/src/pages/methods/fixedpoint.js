@@ -18,7 +18,7 @@ export const Newton= () =>{
 
     return (
       <Layout title="Hello">
-
+        <center style={{fontSize:'30px',fontWeight:'bold'}}>Fixed point</center>
         <div
         style={{
           display: 'flex',
@@ -74,7 +74,7 @@ export const Newton= () =>{
            <Field className='style.form' placeholder='Tolerance' type="number" name="tol" />
            <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
-             Registrar
+             Send
            </button>
          </Form>
        )}

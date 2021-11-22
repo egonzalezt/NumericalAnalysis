@@ -1,0 +1,10 @@
+---
+applications:
+- name: analisisnumerico
+  memory: 1024M
+  disk_quota: 1024M
+  buildpack: nodejs_buildpack
+  host: vasitosInc
+  command: npm start
+  env:
+    env_type: development
