@@ -2,12 +2,10 @@ import numpy as np
 
 #Processing
 def gaussSeidel(A,b,tol,iter):
-    X0 = np.array([0, 0, 0,0],float)
     A=np.array(A,float)
     B=np.array(b,float)
     sizeMatrix=np.shape(A)
     n = sizeMatrix[0]
-    #m = sizeMatrix[1]
 
     system = list()
     for i in range(A.shape[0]):
@@ -15,7 +13,7 @@ def gaussSeidel(A,b,tol,iter):
         system.append("[{0}] = [{1:3g}]".format(" + ".join(row), B[i]))
 
     #Initial values
-    X = np.copy(X0)
+    X = np.zeros(n, dtype = float)
     diferencia = np.ones(n,dtype=float)
     err = 2*tol
     itera = 0

@@ -23,8 +23,9 @@ def fixedPoint(g:str,x0:float,tol:float,iter:int):
             "Iteraciones":Cont,
             "Error":Error,
             "Nota":"X0 es raiz",
-            "idpic":idpic
+            "idpic":idpic,
+            "err":""
         }
         return  resultados
     else:
-        return "No converge"
+        return {"err":"No converge"}

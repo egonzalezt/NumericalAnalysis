@@ -14,9 +14,11 @@ from Functions.Matrix.vandermonde import vandermonde as vm
 from Functions.Matrix.lagrange import Lagrange as lg
 from Functions.Matrix.gaussPivTotal import gaussTotal
 from Functions.Matrix.sustRegresiva import regresivaList
+from Functions.Matrix.newton import newtonInterpol
+from Functions.Matrix.linealSpline import linealSpline
 
 #Scripts
-from scripts.convert import convert
+from scripts.convert import convertList,convert
 from scripts.onlyNum import onlyNum
 from scripts.isFloat import check_float
 
@@ -99,9 +101,10 @@ def gaussPivtotal():
     A,b= convert(values["A"])
     if(quadratic(A)):
         result = gaussTotal(values["A"])
-        matrix= A1,b1= convert(result)
+        A1,b1= convert(result)
+        A2,b2= convertList(result)
         result = regresivaList(A1,b1)
-        return jsonify(result)
+        return jsonify({"A":A2,"Result":result})
     else:
         return jsonify({"err":"Matrix must be quadratic N=M"}), 406
 
@@ -184,6 +187,50 @@ def Lagrange():
 
     result = lg(X,Y,values["xp"])
     return jsonify(result)
+
+@methodsMatrix.route('/api/v1/methodsMatrix/Newton', methods=['POST'])
+@cross_origin()
+def Newton():
+    params={"X":(str),"Y":(str)}
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+        err = []
+        X = [float(x) if check_float(x) is not False else err.append(x) for x in values["X"].split(',')]
+        Y = [float(y) if check_float(y) is not False else err.append(y) for y in values["Y"].split(',')]
+        if(len(err)>0):
+            raise ValueError("Please send numeric data")
+        if(len(X)!=len(Y)):
+            raise ValueError("Incomplete points")     
+    except ValueError as e:
+        return jsonify({"err":str(e)}), 406
+
+    result = newtonInterpol(X,Y)
+    return jsonify(result)
+
+@methodsMatrix.route('/api/v1/methodsMatrix/Lspline', methods=['POST'])
+@cross_origin()
+def LinealSpline():
+    params={"X":(str),"Y":(str)}
+    json_data = request.get_json()
+    try:
+        values = decode(params,json_data)
+        err = []
+        X = [float(x) if check_float(x) is not False else err.append(x) for x in values["X"].split(',')]
+        Y = [float(y) if check_float(y) is not False else err.append(y) for y in values["Y"].split(',')]
+        if(len(err)>0):
+            raise ValueError("Please send numeric data")
+        if(len(X)!=len(Y)):
+            raise ValueError("Incomplete points")     
+    except ValueError as e:
+        return jsonify({"err":str(e)}), 406
+
+    result = linealSpline(X,Y)
+    return jsonify(result)
+
+
+
+
 
 
 @methodsMatrix.route('/api/v1/methodsMatrix/diosayudame', methods=['POST'])

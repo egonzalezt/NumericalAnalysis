@@ -1,6 +1,5 @@
 #import de bibliotecas necesarias
 import numpy as np
-import pandas as pd
 from plots import plot as pl
 from Expression_Evaluator.evaluator import FunctionEval
 
