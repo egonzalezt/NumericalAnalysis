@@ -3,6 +3,11 @@ sidebar_position: 5
 ---
 # Newton
 
+## Newton
+
+[Explore the method](../../methods/newton)
+
+
 ## Objetive of the Method 
 
 Find a root of a function from an initial value, a tolerance and a number of iterations, in this case it is not necessary to have an interval.

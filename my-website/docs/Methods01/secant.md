@@ -4,6 +4,10 @@ sidebar_position: 7
 
 # Secant
 
+## Secant 
+
+[Explore the method](../../methods/secante)
+
 ## Objetive of the Method 
 
 Find a root of a function from two initial values, a tolerance and a number of iterations, for this case it is not necessary to have an interval.

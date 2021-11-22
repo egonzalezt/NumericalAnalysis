@@ -84,7 +84,7 @@ export const Newton= () =>{
      </Formik>
       </div>
       <div className={style.wrapper}>
-        <a href="../blog/Methods01/newton">
+        <a href="../../blog/Methods01/newton">
           <button  className ={style.AYUDADIOS} type="submit">HELP</button>
         </a>
       </div>

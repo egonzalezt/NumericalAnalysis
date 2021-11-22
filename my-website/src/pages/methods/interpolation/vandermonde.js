@@ -44,10 +44,9 @@ export const BusquedasI= () =>{
         }}>        
         <Formik 
         initialValues={{
-          "Y":0,
-          "X":0,
-        }}
-            
+          "Y":'',
+          "X":'',
+        }}       
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
            axios.post('https://analisisapi.herokuapp.com/api/v1/methodsMatrix/vandermonde',JSON.stringify(values),{
@@ -91,7 +90,11 @@ export const BusquedasI= () =>{
          </Form>
        )}
      </Formik>
-
+      </div>
+      <div className={style.wrapper}>
+        <a href="../../../blog/Methods03/vandermonde">
+          <button  className ={style.AYUDADIOS} type="submit">HELP</button>
+        </a>
       </div>
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>

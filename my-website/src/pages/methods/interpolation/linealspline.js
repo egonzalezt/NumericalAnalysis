@@ -82,7 +82,11 @@ export const BusquedasI= () =>{
          </Form>
        )}
      </Formik>
-
+      </div>
+      <div className={style.wrapper}>
+        <a href="../../../blog/Methods03/linealspline">
+          <button  className ={style.AYUDADIOS} type="submit">HELP</button>
+        </a>
       </div>
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>

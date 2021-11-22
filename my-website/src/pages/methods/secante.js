@@ -82,7 +82,7 @@ export const Secante= () =>{
      </Formik>
       </div>
       <div className={style.wrapper}>
-        <a href="../blog/Methods01/secant">
+        <a href="../../blog/Methods01/secant">
           <button  className ={style.AYUDADIOS} type="submit">HELP</button>
         </a>
         </div>

@@ -111,7 +111,7 @@ export const Bisseccion = () => {
         </Formik>
       </div>
       <div className={style.wrapper}>
-        <a href="../docs/Methods01/biseccion">
+        <a href="../../blog/Methods01/biseccion">
           <button  className ={style.AYUDADIOS} type="submit">HELP</button>
         </a>
         </div>

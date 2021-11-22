@@ -4,6 +4,12 @@ sidebar_position: 4
 
 # Simple Gauss (LU)
 
+## Simple Gauss (LU)
+
+[Explore the method](../../methods/matrix/gausslu)
+
+## About this method
+
 The methods that are based on the factorization of matrix replace the matrix of coefficients A by two triangular matrix whose product is equal to it. That is, given the matrix A of order nxn, we find a lower triangular matrix L and an upper triangular matrix U, such that: 
 
 $A = L * U^{-1}$

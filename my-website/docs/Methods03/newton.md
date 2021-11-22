@@ -2,7 +2,13 @@
 sidebar_position: 3
 ---
 
-# Newton (Split Differences) 
+## Newton
+
+## Newton (Split Differences) 
+
+[Explore the method](../../methods/interpolation/newton)
+
+## About this method
 
 To more simply determine Newton's interpolating polynomial, the concept of divided differences is used, which allow several versions of the desired polynomial to be calculated; the given points are used incrementally to obtain an interpolating polynomial at each step. In this way you can compare polynomials of different degrees and with them decide which is the polynomial that will be chosen as a solution to the problem posed.  
 

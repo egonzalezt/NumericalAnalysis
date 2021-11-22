@@ -85,7 +85,7 @@ export const BusquedasI= () =>{
      </div>
 
      <div className={style.wrapper}>
-        <a href="../docs/Methods01/incrementalaSearches">
+        <a href="../../blog/Methods01/incrementalaSearches">
           <button  className ={style.AYUDADIOS} type="submit">HELP</button>
         </a>
       </div>

@@ -2,7 +2,13 @@
 sidebar_position: 2
 ---
 
-# Gauss with partial pivoting
+# Gauss partial pivoting
+
+## Gauss with partial pivoting
+
+[Explore the method](../../methods/matrix/gausspivpart)
+
+## About this method
 
 In each stage k, it is sought that the largest (in absolute value) of the elements of column k that occupy positions greater than or equal to k, occupies the position akk. That is, the largest among the $| aik |$ with $k ≤ i ≤ n$, and the exchange of rows is carried out to locate the highest chosen in row K. By carrying out this process we achieve that the multipliers meet the following property:
 

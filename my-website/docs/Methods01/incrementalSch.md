@@ -4,7 +4,11 @@ sidebar_position: 1
 
 # Incremental Searches
 
+## Incremental Searches
+
 On this section we are going to discover how it works the method incremental searches
+
+[Explore the method](../../methods/busquedasIncrementales)
 
 ## What is Incremental
 

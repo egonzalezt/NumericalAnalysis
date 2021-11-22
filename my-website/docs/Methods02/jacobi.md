@@ -4,6 +4,12 @@ sidebar_position: 8
 
 # Jacobi 
 
+## Jacobi
+
+[Explore the method](../../methods/iteratives/jacobi)
+
+## About this method
+
 An iterative method used to solve systems of linear equations of the type $Ax=B$. The algorithm takes its name from the german mathematical Carl Gustav Jakob Jacobi. The method of Jacobi consists of using formulas as fixed-point iteration. The succession is constructed by decomposing the coefficient matrix of the system $A$ in the following form:
 
 $A = D + L + U$

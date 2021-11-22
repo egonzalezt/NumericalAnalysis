@@ -86,9 +86,12 @@ function HomepageHeader() {
           </Form>
         )}
       </Formik>
-
+      <div className={style.wrapper}>
+        <a href="../../../blog/Methods02/jacobi">
+          <button  className ={style.AYUDADIOS} type="submit">HELP</button>
+        </a>
+      </div>
       <div>
-        
         <ReactInputMatrix
           maxWidth={500}
           maxHeight={220}
