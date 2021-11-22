@@ -6,6 +6,26 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import style from "../../../pages/index.module.css"
 
+function Results(result) {
+  return (
+    <ol>
+      {result.map((vals) => (
+        <li>{JSON.stringify(vals)}</li>
+      ))}
+    </ol>
+  );
+}
+
+function Results2(result) {
+  return (
+    <div>
+      {result.map((vals) => (
+        <p>{JSON.stringify(vals)}</p>
+      ))}
+    </div>
+  );
+}
+
 function HomepageHeader() {
   const [results, setResults] = useState([]);
   const [results2, setResults2] = useState([]);
@@ -101,10 +121,16 @@ function HomepageHeader() {
               {results2.L == null ? "" : "Resultados"}
             </h1>
             <h3 className={style.buttons}>
-              {results2.L == null ? "" : "L: " + JSON.stringify(results2.L) }
+              {results2.L == null ? "" :"Matrix L"}
             </h3>
             <h3 className={style.buttons}>
-              {results2.U == null ? "" : "U: " + JSON.stringify(results2.U)}
+              {results2.L == null ? "" :Results2(results2.L) }
+            </h3>
+            <h3 className={style.buttons}>
+              {results2.L == null ? "" :"Matrix U"}
+            </h3>
+            <h3 className={style.buttons}>
+              {results2.U == null ? "" :Results2(results2.L) }
             </h3>
             <h3 className={style.buttons}>
               {results2.X == null ? "" : "X: " + JSON.stringify(results2.X)}

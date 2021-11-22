@@ -19,8 +19,6 @@ export const Bisseccion = () => {
 
   return (
     <Layout title="Hello">
-      <p>Welcome to method biseccion</p>
-
       <div
         style={{
           display: "flex",
@@ -33,10 +31,10 @@ export const Bisseccion = () => {
         {" "}
         <Formik
           initialValues={{
-            func: "",
-            x0: 0,
-            x1: 0,
-            tol: 0,
+            func: '',
+            x0: '',
+            x1: '',
+            tol: '',
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
@@ -79,7 +77,7 @@ export const Bisseccion = () => {
             <Form className="formulario">
               <Field
                 className="style.form"
-                placeholder="Función"
+                placeholder="Function"
                 type="text"
                 name="func"
               />
@@ -97,7 +95,7 @@ export const Bisseccion = () => {
               />
               <Field
                 className="style.form"
-                placeholder="Tolerancia"
+                placeholder="Tolerance"
                 type="number"
                 name="tol"
               />
@@ -113,7 +111,7 @@ export const Bisseccion = () => {
         </Formik>
       </div>
       <div className={style.wrapper}>
-        <a href="../blog/intro">
+        <a href="../docs/Methods01/biseccion">
           <button  className ={style.AYUDADIOS} type="submit">HELP</button>
         </a>
         </div>

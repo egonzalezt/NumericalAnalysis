@@ -21,8 +21,6 @@ export const BusquedasI= () =>{
 
     return (
       <Layout title="Hello">
-        <p>Welcome to method secante</p>
-
         <div
         style={{
           display: 'flex',
@@ -30,12 +28,13 @@ export const BusquedasI= () =>{
           alignItems: 'center',
           height: '50vh',
           fontSize: '20px',
-        }}>        <Formik 
+        }}>        
+        <Formik 
         initialValues={{
             func: '',
-            x0: 0,
-            delta: 0,
-            iter: 0,
+            x0: '',
+            delta: '',
+            iter: '',
         }}
             
        onSubmit={(values, { setSubmitting }) => {
@@ -73,17 +72,22 @@ export const BusquedasI= () =>{
        {({ isSubmitting }) => (
            
          <Form className='formulario'>
-           <Field className='style.form' placeholder='Función' type="text" name="func" />
+           <Field className='style.form' placeholder='Funtion' type="text" name="func" />
            <Field className='style.form' placeholder='x0' type="number" name="x0" />
            <Field className='style.form' placeholder='Delta' type="number" name="delta" />
-           <Field className='style.form' placeholder='Iteraciones' type="number" name="iter" />
+           <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>
          </Form>
        )}
      </Formik>
+     </div>
 
+     <div className={style.wrapper}>
+        <a href="../docs/Methods01/incrementalaSearches">
+          <button  className ={style.AYUDADIOS} type="submit">HELP</button>
+        </a>
       </div>
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>

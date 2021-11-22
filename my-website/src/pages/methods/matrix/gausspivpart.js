@@ -6,6 +6,26 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import style from "../../../pages/index.module.css"
 
+function Results(result) {
+  return (
+    <div>
+      {result.map((vals) => (
+        <p>{JSON.stringify(vals)}</p>
+      ))}
+    </div>
+  );
+}
+
+function Results2(result) {
+  return (
+    <ol>
+      {result.map((vals) => (
+        <li>{JSON.stringify(vals)}</li>
+      ))}
+    </ol>
+  );
+}
+
 function HomepageHeader() {
   const [results, setResults] = useState([]);
   const [results2, setResults2] = useState([]);
@@ -98,16 +118,21 @@ function HomepageHeader() {
 
       <h1 className={style.buttons}>
               {results2.A == null ? "" : "Resultados"}
-            </h1>
-            <h3 className={style.buttons}>
-              {results2.A == null ? "" : "A: " + JSON.stringify(results2.A) }
-            </h3>
-            <h3 className={style.buttons}>
-              {results2.X == null ? "" : "X: " + JSON.stringify(results2.X)}
-            </h3>
-            </div>
-            </div>
-
+        </h1>
+        <h3 className={style.buttons}>
+          {results2.A == null ? "" :"Matrix A"}
+        </h3>
+        <h3 className={style.buttons}>
+          {results2.A == null ? "" :Results(results2.A) }
+        </h3>
+        <h3 className={style.buttons}>
+          {results2.A == null ? "" :"X"}
+        </h3>
+        <h3 className={style.buttons}>
+          {results2.X == null ? "" :Results2(results2.X)}
+        </h3>
+        </div>
+        </div>
     </div>
   );
 }

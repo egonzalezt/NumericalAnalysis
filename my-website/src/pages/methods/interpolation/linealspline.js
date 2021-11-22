@@ -3,19 +3,28 @@ import React,{useState,useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import style from '../../pages/index.module.css';
-//la papa
-export const Secante= () =>{
+import style from "../../../pages/index.module.css"
+let a;
+
+function Results(result) {
+  return (
+    <ol>
+      {result.map((vals) => (
+        <li>{vals}</li>
+      ))}
+    </ol>
+  );
+}
+
+export const BusquedasI= () =>{
     let initialState={
-      "x":'i',
-      "Iteraciones":'i',
-      "Error":'i',
+      "Y":'i',
+      "X":'i',
     }
     const [results,setResults] = useState(initialState)
 
     return (
       <Layout title="Hello">
-
         <div
         style={{
           display: 'flex',
@@ -23,23 +32,19 @@ export const Secante= () =>{
           alignItems: 'center',
           height: '50vh',
           fontSize: '20px',
-        }}>        <Formik 
+        }}>        
+        <Formik 
         initialValues={{
-            func: '',
-            x0: '',
-            x1: '',
-            tol: '',
-            iter: '',
-            }}
+          "Y":"",
+          "X":"",
+        }}
             
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Secant',JSON.stringify(values),{
+           axios.post('http://192.168.1.236:5000/api/v1/methodsMatrix/Lspline',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "*",
-              
+              'Content-Type': 'application/json'
             }
           })
             .then(function (response) {
@@ -48,7 +53,7 @@ export const Secante= () =>{
                 Swal.fire({
                   icon: 'success',
                   title: 'Exito!!',
-                  text: response.data.txt,
+                  text: response.data,
                   timer: 2000,
                   timerProgressBar: true,
                 })
@@ -58,7 +63,7 @@ export const Secante= () =>{
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: error.response.data,
+              text: error.response.data.err,
               })
             });
            setSubmitting(false);
@@ -69,31 +74,24 @@ export const Secante= () =>{
        {({ isSubmitting }) => (
            
          <Form className='formulario'>
-           <Field className='style.form' placeholder='Function' type="text" name="func" />
-           <Field className='style.form' placeholder='x0' type="number" name="x0" />
-           <Field className='style.form' placeholder='x1' type="number" name="x1" />
-           <Field className='style.form' placeholder='Tolerance' type="number" name="tol" />
-           <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
+           <Field className='style.form' placeholder='X' type="text" name="X" />
+           <Field className='style.form' placeholder='Y' type="text" name="Y" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>
          </Form>
        )}
      </Formik>
+
       </div>
-      <div className={style.wrapper}>
-        <a href="../blog/Methods01/secant">
-          <button  className ={style.AYUDADIOS} type="submit">HELP</button>
-        </a>
-        </div>
-      <div >
-        <h1 className={style.buttons}>{results.x=='i'?'':"Resultados"}</h1>
-        <h3 className={style.buttons}>{results.x=='i'?'': "x: "+results.x}</h3>
-        <h3 className={style.buttons}>{results.Iteraciones=='i'?'': "Iteraciones: "+results.Iteraciones}</h3>
-        <h3 className={style.buttons}>{results.Error=='i'?'':"Error: "+results.Error}</h3>
+      <div  className={style.contenedor_a}>
+        <div className={style.contenedor_b}>
+        <h1 className={style.buttons}>{results.X=='i'?'':"Resultados"}</h1>
+        <h3 className={style.buttons}>{results.X=='i'?'': Results(results)}</h3>
+         </div>
         </div>
       </Layout>
     );
 };
 
-export default Secante;
+export default BusquedasI;

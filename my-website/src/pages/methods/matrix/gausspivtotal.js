@@ -55,11 +55,12 @@ function HomepageHeader() {
             });
           });
           values.A = doubles;
+          console.log(values);
 
           setTimeout(() => {
             axios
               .post(
-                "https://analisisapi.herokuapp.com/api/v1/methodsMatrix/gauss",
+                "https://analisisapi.herokuapp.com/api/v1/methodsMatrix/gaussTotal",
                 JSON.stringify(values),
                 {
                   headers: {
@@ -69,7 +70,6 @@ function HomepageHeader() {
                 }
               )
               .then(function (response) {
-                console.log(response);
                 setResults2(response.data);
                 Swal.fire({
                   icon: "success",
@@ -80,7 +80,7 @@ function HomepageHeader() {
                 });
               })
               .catch(function (error) {
-                console.log(error.response.data);
+                console.log(error.response.data)
                 Swal.fire({
                   icon: "error",
                   title: "Oops...",
@@ -103,11 +103,7 @@ function HomepageHeader() {
           </Form>
         )}
       </Formik>
-      <div className={style.wrapper}>
-          <a href="../blog/intro">
-            <button  className ={style.AYUDADIOS} type="submit">HELP</button>
-          </a>
-      </div>
+
       <div>
         
         <ReactInputMatrix
@@ -121,24 +117,24 @@ function HomepageHeader() {
       <div className={style.contenedor_b}>
 
       <h1 className={style.buttons}>
-              {results2.A == null ? "" : "Resultados"}
-            </h1>
-            <h3 className={style.buttons}>
-              {results2.A == null ? "" :"Converted Matrix"}
-            </h3>
-            <h3 className={style.buttons}>
-              {results2.A == null ? "" :Results(results2.A) }
-            </h3>
-            <h3 className={style.buttons}>
-              {results2.A == null ? "" :"X"}
-            </h3>
-            <h3 className={style.buttons}>
-              {results2.X == null ? "" :Results2(results2.X)}
-            </h3>
-            </div>
-            </div>
+        {results2.A == null ? "" : "Resultados"}
+      </h1>
+      <h3 className={style.buttons}>
+        {results2.A == null ? "" :"Converted Matrix"}
+      </h3>
+      <h3 className={style.buttons}>
+        {results2.A == null ? "" :Results(results2.A) }
+      </h3>
+      <h3 className={style.buttons}>
+          {results2.A == null ? "" :"X"}
+      </h3>
+      <h3 className={style.buttons}>
+        {results2.Result == null ? "" : Results2(results2.Result)}
+      </h3>
+      </div>
+      </div>
+
     </div>
-    
   );
 }
 

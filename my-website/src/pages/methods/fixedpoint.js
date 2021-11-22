@@ -7,15 +7,12 @@ import style from '../../pages/index.module.css';
 let a;
 export const Newton= () =>{
     let initialState={
-      "fx0":'i',
-      "fx1":'i',
-      "fx":'i',
-      "idpic":'i',
-      "x":'i',
-      "x0":'i',
-      "x1":'i',
-
-
+      "X0":undefined,
+      "X1":undefined,
+      "Iteraciones":undefined,
+      "Nota":undefined,
+      "idpic":undefined,
+      "err":''
     }
     const [results,setResults] = useState(initialState)
 
@@ -31,7 +28,7 @@ export const Newton= () =>{
           fontSize: '20px',
         }}>        <Formik 
         initialValues={{
-            func: '',
+            g: '',
             x0: '',
             tol: '',
             iter: '',
@@ -39,7 +36,7 @@ export const Newton= () =>{
             
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/Newton',JSON.stringify(values),{
+           axios.post('https://analisisapi.herokuapp.com/api/v1/methods/FixedPoint',JSON.stringify(values),{
             headers: {
               // Overwrite Axios's automatically set Content-Type
               'Content-Type': 'application/json'
@@ -61,7 +58,7 @@ export const Newton= () =>{
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: error.response.data,
+              text: error.response,
               })
             });
            setSubmitting(false);
@@ -72,10 +69,10 @@ export const Newton= () =>{
        {({ isSubmitting }) => (
            
          <Form className='formulario'>
-           <Field className='style.form' placeholder='Función' type="text" name="func" />
+           <Field className='style.form' placeholder='Function g(x)' type="text" name="g" />
            <Field className='style.form' placeholder='x0' type="number" name="x0" />
-           <Field className='style.form' placeholder='Tolerancia' type="number" name="tol" />
-           <Field className='style.form' placeholder='Iteraciones' type="number" name="iter" />
+           <Field className='style.form' placeholder='Tolerance' type="number" name="tol" />
+           <Field className='style.form' placeholder='Iterations' type="number" name="iter" />
            <button type="submit" className="style.button" disabled={isSubmitting}>
              Registrar
            </button>
@@ -84,23 +81,24 @@ export const Newton= () =>{
      </Formik>
       </div>
       <div className={style.wrapper}>
-        <a href="../blog/Methods01/newton">
+        <a href="../blog/Methods01/fixedpoint">
           <button  className ={style.AYUDADIOS} type="submit">HELP</button>
         </a>
       </div>
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>
-        <h1 className={style.buttons}>{results.fx0=='i'?'':"Resultados"}</h1>
-        <h3 className={style.buttons}>{results.fx0=='i'?'': "fx0: "+results.fx0}</h3>
-        <h3 className={style.buttons}>{results.fx1=='i'?'': "fx1: "+results.fx1}</h3>
-        <h3 className={style.buttons}>{results.fx=='i'?'': "x: "+results.fx}</h3>
-        <h3 className={style.buttons}>{results.x=='i'?'': "x: "+results.x}</h3>
-        <h3 className={style.buttons}>{results.x0=='i'?'': "x0: "+results.x0}</h3>
-        <h3 className={style.buttons}>{results.x1=='i'?'': "x1: "+results.x1}</h3>
-         </div>
-        <p style={{display: 'none'}}>{results.idpic=='i'?'': a="https://analisisapi.herokuapp.com/static/"+results.idpic +".png" } </p>
-        <img className="img_grafic" src={a}></img>
-        </div>
+        <h1 className={style.buttons}>{results.err==''?'': "Results"}</h1>
+        <h3 className={style.buttons}>{results.err==''?'': "Sorry: "+results.err}</h3>
+        <h1 className={style.buttons}>{results.X0==undefined?'':"Results"}</h1>
+        <h3 className={style.buttons}>{results.X0==undefined?'': "X0: "+results.X0}</h3>
+        <h3 className={style.buttons}>{results.X0==undefined?'': "X1: "+results.X1}</h3>
+        <h3 className={style.buttons}>{results.X0==undefined?'': "Iterations: "+results.Iteraciones}</h3>
+        <h3 className={style.buttons}>{results.X0==undefined?'': "Error: "+results.Error}</h3>
+        <h3 className={style.buttons}>{results.X0==undefined?'': "Note: "+results.Nota}</h3>
+      </div>
+      <p style={{display: 'none'}}>{results.idpic==undefined?'': a="https://analisisapi.herokuapp.com/static/"+results.idpic +".png" } </p>
+      <img className="img_grafic" src={a}></img>
+      </div>
       </Layout>
     );
 };

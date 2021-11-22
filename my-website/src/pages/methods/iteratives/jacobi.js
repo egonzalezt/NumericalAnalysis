@@ -26,7 +26,7 @@ function HomepageHeader() {
       <Formik
         initialValues={{
           A: [],
-          N:0
+          N:''
         }}
         onSubmit={(values, { setSubmitting }) => {
           var doubles = results.map(function (obj) {

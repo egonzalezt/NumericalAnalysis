@@ -4,7 +4,27 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import style from "../../../pages/index.module.css"
-let a;
+
+function Results(result) {
+  return (
+    <div>
+      {result.map((vals) => (
+        <p>{JSON.stringify(vals)}</p>
+      ))}
+    </div>
+  );
+}
+
+function Results2(result) {
+  return (
+    <ol>
+      {result.map((vals) => (
+        <li>{JSON.stringify(vals)}</li>
+      ))}
+    </ol>
+  );
+}
+
 export const BusquedasI= () =>{
     let initialState={
       "Y":'i',
@@ -75,9 +95,11 @@ export const BusquedasI= () =>{
       </div>
       <div  className={style.contenedor_a}>
         <div className={style.contenedor_b}>
-        <h1 className={style.buttons}>{results.X=='i'?'':"Resultados"}</h1>
-        <h3 className={style.buttons}>{results.X=='i'?'': "A: "+JSON.stringify(results.A)}</h3>
-        <h3 className={style.buttons}>{results.X=='i'?'': "X: "+JSON.stringify(results.X)}</h3>
+        <h2 className={style.buttons}>{results.X=='i'?'':"Results"}</h2>
+        <h3 className={style.buttons}>{results.X=='i'?'':"Result Matrix "}</h3>
+        <h3 className={style.buttons}>{results.X=='i'?'': Results(results.A)}</h3>
+        <h2 className={style.buttons}>{results.X=='i'?'':"X"}</h2>
+        <h3 className={style.buttons}>{results.X=='i'?'': Results2(results.X)}</h3>
          </div>
         </div>
       </Layout>
